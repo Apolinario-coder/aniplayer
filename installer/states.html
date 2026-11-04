@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instalador do Ani Player — estados</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --page: #120f1f; --panel: #221b36; --control: #312649;
+    --hover: #41315b; --border: #9d86bb; --ink: #fdf2ff;
+    --muted: #d0bfe2; --sakura: #ffb0d2; --on-sakura: #2d1531; --error: #ffadb8;
+    --gap: .5rem; --radius: .75rem; --action: 3rem;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 1rem system-ui; }
+  main { max-inline-size: 60rem; margin: auto; padding: 1rem; }
+  .stack { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(17rem,100%),1fr)); gap: 1rem; }
+  section { background: var(--panel); padding: 1rem; border-radius: var(--radius); }
+  h2 { margin-block: 0 var(--gap); }
+  p { color: var(--muted); margin-block: 0 var(--gap); }
+  .error { color: var(--error); }
+  label { display: flex; align-items: center; gap: var(--gap); min-block-size: var(--action); }
+  input { accent-color: var(--sakura); }
+  progress { inline-size: 100%; accent-color: var(--sakura); }
+  .path { overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; justify-content: end; gap: var(--gap); margin-block-start: 1rem; }
+  button { color: var(--ink); background: var(--control); font: inherit; border: 1px solid var(--border);
+    border-radius: var(--radius); min-block-size: var(--action); padding-inline: .75rem; }
+  button:hover, button[data-state="hover"] { background: var(--hover); }
+  button.primary { color: var(--on-sakura); background: var(--sakura); }
+  button:active, button[data-state="active"] { border: 2px solid var(--ink); }
+  :focus-visible, [data-state="focus"] { outline: 2px solid var(--sakura); outline-offset: 2px; }
+  button:disabled { color: var(--muted); background: var(--control); }
+</style>
+<main>
+  <h1>Instalador do Ani Player</h1>
+  <div class="stack">
+    <section>
+      <h2>Instalar o Ani Player</h2>
+      <p>Inclui reprodução, Anime4K e interpolação RIFE.</p>
+      <p class="path">Pasta de instalação · C:\Apps\Ani Player</p>
+      <button>Alterar…</button>
+      <label><input type="checkbox">Criar atalho na área de trabalho</label>
+      <div class="actions"><button>Cancelar</button><button class="primary">Instalar</button></div>
+    </section>
+    <section>
+      <h2>Atalho selecionado</h2>
+      <label><input type="checkbox" checked>Criar atalho na área de trabalho</label>
+      <div class="actions"><button data-state="hover">Cancelar</button><button class="primary" data-state="focus">Instalar</button></div>
+    </section>
+    <section aria-busy="true">
+      <h2>Instalando o Ani Player…</h2>
+      <p role="status">Copiando o player e os componentes de vídeo. Aguarde.</p>
+      <progress aria-label="Progresso da instalação" max="100" value="62">62%</progress>
+      <p>62% concluído</p>
+      <div class="actions"><button disabled>Cancelar</button><button class="primary" disabled>Instalando…</button></div>
+    </section>
+    <section>
+      <h2>Tudo pronto</h2>
+      <p>Abra o player agora ou encontre-o no menu Iniciar.</p>
+      <div class="actions"><button>Fechar</button><button class="primary" data-state="active">Abrir Ani Player</button></div>
+    </section>
+    <section>
+      <h2>Instalação interrompida</h2>
+      <p class="error" role="alert">Feche o Ani Player e tente novamente.</p>
+      <div class="actions"><button>Fechar</button><button class="primary">Tentar novamente</button></div>
+    </section>
+  </div>
+</main>
+</html>

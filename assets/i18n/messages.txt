@@ -1,0 +1,249 @@
+Language|Idioma|Idioma|Langue|Sprache|语言|言語
+Open episode|Abrir episódio|Abrir episodio|Ouvrir un épisode|Episode öffnen|打开剧集|エピソードを開く
+Open URL|Abrir URL|Abrir URL|Ouvrir une URL|URL öffnen|打开网址|URLを開く
+Tools|Ferramentas|Herramientas|Outils|Werkzeuge|工具|ツール
+Motion|Fluidez|Fluidez|Fluidité|Bewegung|流畅度|滑らかさ
+Tracks|Faixas|Pistas|Pistes|Spuren|轨道|トラック
+Audio, subtitles and chapters|Áudio, legendas e capítulos|Audio, subtítulos y capítulos|Audio, sous-titres et chapitres|Audio, Untertitel und Kapitel|音频、字幕和章节|音声・字幕・チャプター
+Episodes|Episódios|Episodios|Épisodes|Episoden|剧集|エピソード
+Dismiss|Dispensar|Descartar|Ignorer|Ausblenden|关闭提示|通知を閉じる
+Position|Posição|Posición|Position|Position|播放位置|再生位置
+Previous|Anterior|Anterior|Précédent|Zurück|上一个|前へ
+Play|Reproduzir|Reproducir|Lire|Abspielen|播放|再生
+Pause|Pausar|Pausar|Mettre en pause|Pause|暂停|一時停止
+Next|Próximo|Siguiente|Suivant|Weiter|下一个|次へ
+Exit full screen|Sair da tela cheia|Salir de pantalla completa|Quitter le plein écran|Vollbild verlassen|退出全屏|全画面を終了
+Full screen|Tela cheia|Pantalla completa|Plein écran|Vollbild|全屏|全画面
+Unmute|Ativar som|Activar sonido|Réactiver le son|Ton einschalten|取消静音|ミュート解除
+Mute|Silenciar|Silenciar|Couper le son|Stummschalten|静音|ミュート
+Volume|Volume|Volumen|Volume|Lautstärke|音量|音量
+Playback|Reprodução|Reproducción|Lecture|Wiedergabe|播放|再生
+Audio playback|Reprodução de áudio|Reproducción de audio|Lecture audio|Audiowiedergabe|音频播放|音声再生
+ANIME SESSION|SESSÃO DE ANIME|SESIÓN DE ANIME|SESSION ANIME|ANIME-SESSION|动漫时间|アニメセッション
+Your next episode|Seu próximo episódio|Tu próximo episodio|Votre prochain épisode|Deine nächste Episode|你的下一集|次のエピソード
+Drop a file or open an episode.|Arraste um arquivo ou abra um episódio.|Suelta un archivo o abre un episodio.|Déposez un fichier ou ouvrez un épisode.|Datei ablegen oder Episode öffnen.|拖入文件或打开剧集。|ファイルをドロップするか、エピソードを開いてください。
+Drop a file here or open an episode to get started.|Arraste um arquivo para cá ou abra um episódio para começar.|Suelta aquí un archivo o abre un episodio para empezar.|Déposez un fichier ici ou ouvrez un épisode pour commencer.|Lege hier eine Datei ab oder öffne eine Episode.|将文件拖到此处，或打开剧集开始观看。|ここにファイルをドロップするか、エピソードを開いてください。
+Could not start playback.|Falha ao iniciar a reprodução.|No se pudo iniciar la reproducción.|Impossible de démarrer la lecture.|Wiedergabe konnte nicht gestartet werden.|无法开始播放。|再生を開始できませんでした。
+Preparing playback…|Preparando a reprodução…|Preparando la reproducción…|Préparation de la lecture…|Wiedergabe wird vorbereitet…|正在准备播放…|再生を準備中…
+Choose episode|Escolher episódio|Elegir episodio|Choisir un épisode|Episode auswählen|选择剧集|エピソードを選択
+Close|Fechar|Cerrar|Fermer|Schließen|关闭|閉じる
+Open a video to choose its tracks.|Abra um vídeo para escolher as faixas.|Abre un vídeo para elegir sus pistas.|Ouvrez une vidéo pour choisir ses pistes.|Öffne ein Video, um seine Spuren auszuwählen.|打开视频以选择轨道。|トラックを選択するには動画を開いてください。
+Video|Vídeo|Vídeo|Vidéo|Video|视频|映像
+Audio|Áudio|Audio|Audio|Audio|音频|音声
+Subtitles|Legendas|Subtítulos|Sous-titres|Untertitel|字幕|字幕
+Disabled|Desativada|Desactivada|Désactivée|Deaktiviert|已禁用|無効
+Disable track|Desativar faixa|Desactivar pista|Désactiver la piste|Spur deaktivieren|禁用轨道|トラックを無効化
+Load external audio|Carregar áudio externo|Cargar audio externo|Charger un fichier audio externe|Externes Audio laden|加载外部音频|外部音声を読み込む
+Load subtitles|Carregar legenda|Cargar subtítulos|Charger des sous-titres|Untertitel laden|加载字幕|字幕を読み込む
+Advance 100 ms|Adiantar 100 ms|Adelantar 100 ms|Avancer de 100 ms|100 ms vorziehen|提前 100 毫秒|100 ms早める
+Delay 100 ms|Atrasar 100 ms|Retrasar 100 ms|Retarder de 100 ms|100 ms verzögern|延后 100 毫秒|100 ms遅らせる
+Show / hide|Mostrar / ocultar|Mostrar u ocultar|Afficher ou masquer|Ein-/ausblenden|显示或隐藏|表示／非表示
+Size|Tamanho|Tamaño|Taille|Größe|大小|サイズ
+Chapters|Capítulos|Capítulos|Chapitres|Kapitel|章节|チャプター
+Chapter {n}|Capítulo {n}|Capítulo {n}|Chapitre {n}|Kapitel {n}|第 {n} 章|チャプター {n}
+Real-time upscaling for high-end GPUs. Output follows the on-screen video size.|Upscaling em tempo real para GPUs de alto desempenho. A saída acompanha o tamanho do vídeo na tela.|Escalado en tiempo real para GPU de alto rendimiento. La salida se adapta al tamaño del vídeo en pantalla.|Mise à l’échelle en temps réel pour les GPU haut de gamme. La sortie suit la taille de la vidéo à l’écran.|Echtzeit-Skalierung für leistungsstarke GPUs. Die Ausgabe folgt der Videogröße auf dem Bildschirm.|为高性能 GPU 提供实时超分辨率。输出随屏幕上的视频尺寸变化。|高性能GPU向けのリアルタイムアップスケーリングです。出力は画面上の動画サイズに合わせます。
+Interpolation runs on the GPU via RIFE/Vulkan. FPS targets use a lower internal resolution for large videos.|A interpolação usa RIFE/Vulkan na GPU. As metas de FPS usam resolução interna reduzida em vídeos grandes.|La interpolación usa RIFE/Vulkan en la GPU. Los objetivos de FPS reducen la resolución interna de vídeos grandes.|L’interpolation utilise RIFE/Vulkan sur le GPU. Les objectifs d’images/s réduisent la résolution interne des grandes vidéos.|Die Interpolation nutzt RIFE/Vulkan auf der GPU. FPS-Ziele senken bei großen Videos die interne Auflösung.|插帧通过 RIFE/Vulkan 在 GPU 上运行。对高分辨率视频，目标帧率模式会降低内部处理分辨率。|補間はGPU上でRIFE/Vulkanを使います。目標FPSを指定すると、高解像度動画の内部処理解像度を下げます。
+SOURCE|FONTE|ORIGEN|SOURCE|QUELLE|源视频|ソース
+OUTPUT|SAÍDA|SALIDA|SORTIE|AUSGABE|输出|出力
+Motion mode|Modo de fluidez|Modo de fluidez|Mode de fluidité|Bewegungsmodus|流畅度模式|補間モード
+Active profile|Perfil em uso|Perfil activo|Profil actif|Aktives Profil|当前配置|使用中のプロファイル
+Hide profiles|Ocultar perfis|Ocultar perfiles|Masquer les profils|Profile ausblenden|隐藏配置|プロファイルを隠す
+Edit automatic profiles|Editar perfis automáticos|Editar perfiles automáticos|Modifier les profils automatiques|Automatische Profile bearbeiten|编辑自动配置|自動プロファイルを編集
+Export|Exportação|Exportación|Exportation|Export|导出|書き出し
+Exporting video…|Exportando vídeo…|Exportando vídeo…|Exportation de la vidéo…|Video wird exportiert…|正在导出视频…|動画を書き出し中…
+Cancel export|Cancelar exportação|Cancelar exportación|Annuler l’exportation|Export abbrechen|取消导出|書き出しをキャンセル
+Export MKV|Exportar MKV|Exportar MKV|Exporter en MKV|MKV exportieren|导出 MKV|MKVに書き出す
+Open a local file and choose an FFmpeg output rate.|Abra um arquivo local e escolha uma taxa de saída FFmpeg.|Abre un archivo local y elige una frecuencia de salida de FFmpeg.|Ouvrez un fichier local et choisissez une cadence de sortie FFmpeg.|Öffne eine lokale Datei und wähle eine FFmpeg-Ausgabebildrate.|打开本地文件并选择 FFmpeg 输出帧率。|ローカルファイルを開き、FFmpegの出力フレームレートを選択してください。
+HLS streaming|Transmissão HLS|Emisión HLS|Diffusion HLS|HLS-Streaming|HLS 串流|HLS配信
+The first matching rule applies. Set a limit to zero to ignore it.|A primeira regra compatível é aplicada. Use zero para ignorar um limite.|Se aplica la primera regla que coincida. Usa cero para ignorar un límite.|La première règle correspondante s’applique. Utilisez zéro pour ignorer une limite.|Die erste passende Regel gilt. Null ignoriert den jeweiligen Grenzwert.|应用首条匹配规则。设为零可忽略该限制。|最初に一致したルールが適用されます。上限を0にすると無視されます。
+Rule {n}|Regra {n}|Regla {n}|Règle {n}|Regel {n}|规则 {n}|ルール {n}
+Remove|Remover|Quitar|Retirer|Entfernen|移除|削除
+Extension|Extensão|Extensión|Extension|Endung|扩展名|拡張子
+Max height|Altura máx.|Altura máx.|Hauteur max.|Max. Höhe|最大高度|最大高さ
+Max FPS|FPS máx.|FPS máx.|IPS max.|Max. FPS|最大帧率|最大FPS
+Add rule|Adicionar regra|Añadir regla|Ajouter une règle|Regel hinzufügen|添加规则|ルールを追加
+Save profiles|Salvar perfis|Guardar perfiles|Enregistrer les profils|Profile speichern|保存配置|プロファイルを保存
+Profiles saved.|Perfis salvos.|Perfiles guardados.|Profils enregistrés.|Profile gespeichert.|配置已保存。|プロファイルを保存しました。
+Copy link|Copiar link|Copiar enlace|Copier le lien|Link kopieren|复制链接|リンクをコピー
+Waiting for the first segments…|Aguardando os primeiros segmentos…|Esperando los primeros segmentos…|En attente des premiers segments…|Warte auf die ersten Segmente…|正在等待首批分段…|最初のセグメントを待機中…
+Stop streaming|Encerrar transmissão|Detener emisión|Arrêter la diffusion|Streaming beenden|停止串流|配信を停止
+Anyone with access to the selected address can open the video.|Pessoas com acesso ao endereço escolhido poderão abrir o vídeo.|Quien tenga acceso a la dirección elegida podrá abrir el vídeo.|Toute personne ayant accès à l’adresse choisie peut ouvrir la vidéo.|Wer auf die gewählte Adresse zugreifen kann, kann das Video öffnen.|能够访问所选地址的人都可以打开视频。|選択したアドレスにアクセスできる人は動画を開けます。
+Port|Porta|Puerto|Port|Port|端口|ポート
+Start streaming|Iniciar transmissão|Iniciar emisión|Démarrer la diffusion|Streaming starten|开始串流|配信を開始
+Enter a valid IPv4 address.|Informe um IPv4 válido.|Introduce una dirección IPv4 válida.|Saisissez une adresse IPv4 valide.|Gib eine gültige IPv4-Adresse ein.|请输入有效的 IPv4 地址。|有効なIPv4アドレスを入力してください。
+Choose a specific IPv4 interface.|Escolha uma interface IPv4 específica.|Elige una interfaz IPv4 concreta.|Choisissez une interface IPv4 précise.|Wähle eine bestimmte IPv4-Schnittstelle.|请选择具体的 IPv4 接口。|使用するIPv4インターフェイスを選択してください。
+Available for local files in Original or FFmpeg mode.|Disponível para arquivos locais em modo Original ou FFmpeg.|Disponible para archivos locales en modo Original o FFmpeg.|Disponible pour les fichiers locaux en mode Original ou FFmpeg.|Für lokale Dateien im Modus Original oder FFmpeg verfügbar.|仅适用于原始或 FFmpeg 模式下的本地文件。|オリジナルまたはFFmpegモードのローカルファイルで利用できます。
+Paste an HTTP or HTTPS link.|Cole um link HTTP ou HTTPS.|Pega un enlace HTTP o HTTPS.|Collez un lien HTTP ou HTTPS.|Füge einen HTTP- oder HTTPS-Link ein.|粘贴 HTTP 或 HTTPS 链接。|HTTPまたはHTTPSリンクを貼り付けてください。
+Video address|Endereço do vídeo|Dirección del vídeo|Adresse de la vidéo|Videoadresse|视频地址|動画のアドレス
+Play URL|Reproduzir URL|Reproducir URL|Lire l’URL|URL abspielen|播放网址|URLを再生
+Enter a valid HTTP or HTTPS address.|Informe um endereço HTTP ou HTTPS válido.|Introduce una dirección HTTP o HTTPS válida.|Saisissez une adresse HTTP ou HTTPS valide.|Gib eine gültige HTTP- oder HTTPS-Adresse ein.|请输入有效的 HTTP 或 HTTPS 地址。|有効なHTTPまたはHTTPSアドレスを入力してください。
+Online quality|Qualidade online|Calidad en línea|Qualité en ligne|Online-Qualität|在线播放画质|オンライン画質
+Best available|Melhor disponível|Mejor disponible|Meilleure disponible|Beste verfügbare|最高可用画质|利用可能な最高画質
+Up to 1080p|Até 1080p|Hasta 1080p|Jusqu’à 1080p|Bis 1080p|最高 1080p|最大1080p
+Up to 720p|Até 720p|Hasta 720p|Jusqu’à 720p|Bis 720p|最高 720p|最大720p
+Stop|Parar|Detener|Arrêter|Stopp|停止|停止
+Loop video|Repetir vídeo|Repetir vídeo|Boucler la vidéo|Video wiederholen|循环播放视频|動画をループ
+Loop queue|Repetir fila|Repetir cola|Boucler la file|Warteschlange wiederholen|循环播放队列|キューをループ
+Set A–B loop|Marcar trecho A–B|Marcar bucle A–B|Définir la boucle A–B|A–B-Schleife setzen|设置 A–B 循环|A–Bリピートを設定
+Previous frame|Quadro anterior|Fotograma anterior|Image précédente|Vorheriges Bild|上一帧|前のフレーム
+Next frame|Próximo quadro|Fotograma siguiente|Image suivante|Nächstes Bild|下一帧|次のフレーム
+Speed|Velocidade|Velocidad|Vitesse|Geschwindigkeit|速度|速度
+Always on top|Sempre visível|Siempre visible|Toujours au premier plan|Immer im Vordergrund|窗口置顶|常に手前に表示
+Picture|Imagem|Imagen|Image|Bild|画面|映像設定
+Fill|Preencher|Rellenar|Remplir|Ausfüllen|填充|画面いっぱい
+Fit|Ajustar|Ajustar|Ajuster|Einpassen|适应|画面に合わせる
+Rotation|Rotação|Rotación|Rotation|Drehung|旋转|回転
+Aspect ratio|Proporção|Relación de aspecto|Format d’image|Seitenverhältnis|宽高比|アスペクト比
+Decoding|Decodificação|Decodificación|Décodage|Dekodierung|解码|デコード
+Zoom|Zoom|Zoom|Zoom|Zoom|缩放|ズーム
+Deinterlacing|Desentrelaçar|Desentrelazado|Désentrelacement|Deinterlacing|去隔行|インターレース解除
+Brightness|Brilho|Brillo|Luminosité|Helligkeit|亮度|明るさ
+Contrast|Contraste|Contraste|Contraste|Kontrast|对比度|コントラスト
+Saturation|Saturação|Saturación|Saturation|Sättigung|饱和度|彩度
+Save screenshot|Salvar captura|Guardar captura|Enregistrer la capture|Screenshot speichern|保存截图|スクリーンショットを保存
+Media information|Informações da mídia|Información multimedia|Informations du média|Medieninformationen|媒体信息|メディア情報
+Source rate|Taxa de origem|Frecuencia original|Cadence source|Quellbildrate|源帧率|元のフレームレート
+Configuration|Configuração|Configuración|Configuration|Konfiguration|配置|構成
+Advanced mpv property|Propriedade avançada do mpv|Propiedad avanzada de mpv|Propriété avancée de mpv|Erweiterte mpv-Eigenschaft|mpv 高级属性|mpvの詳細プロパティ
+Property|Propriedade|Propiedad|Propriété|Eigenschaft|属性|プロパティ
+Value|Valor|Valor|Valeur|Wert|值|値
+Apply property|Aplicar propriedade|Aplicar propiedad|Appliquer la propriété|Eigenschaft anwenden|应用属性|プロパティを適用
+Open configuration folder|Abrir pasta de configuração|Abrir carpeta de configuración|Ouvrir le dossier de configuration|Konfigurationsordner öffnen|打开配置文件夹|設定フォルダーを開く
+About Ani Player|Sobre o Ani Player|Acerca de Ani Player|À propos d’Ani Player|Über Ani Player|关于 Ani Player|Ani Playerについて
+Ani Player · Anime edition for Windows|Ani Player · Edição Anime para Windows|Ani Player · Edición anime para Windows|Ani Player · Édition anime pour Windows|Ani Player · Anime-Edition für Windows|Ani Player · Windows 动漫版|Ani Player · Windows向けアニメ版
+Rust interface and controls. mpv engine with FFmpeg and RIFE interpolation.|Interface e controle em Rust. Motor mpv, interpolação FFmpeg e RIFE.|Interfaz y controles en Rust. Motor mpv con interpolación FFmpeg y RIFE.|Interface et commandes en Rust. Moteur mpv avec interpolation FFmpeg et RIFE.|Oberfläche und Steuerung in Rust. mpv-Engine mit FFmpeg- und RIFE-Interpolation.|Rust 界面与控制。采用 mpv 引擎及 FFmpeg 和 RIFE 插帧。|Rust製のインターフェイスと操作系。mpvエンジンとFFmpeg・RIFEによる補間を使用します。
+Ctrl+O opens files, Ctrl+U opens a URL, and F11 toggles full screen.|Ctrl+O abre arquivos, Ctrl+U abre URL e F11 alterna a tela cheia.|Ctrl+O abre archivos, Ctrl+U abre una URL y F11 alterna la pantalla completa.|Ctrl+O ouvre des fichiers, Ctrl+U ouvre une URL et F11 bascule le plein écran.|Strg+O öffnet Dateien, Strg+U öffnet eine URL und F11 wechselt den Vollbildmodus.|Ctrl+O 打开文件，Ctrl+U 打开网址，F11 切换全屏。|Ctrl+Oでファイル、Ctrl+UでURLを開き、F11で全画面を切り替えます。
+Track|Faixa|Pista|Piste|Spur|轨道|トラック
+Open media|Abrir mídia|Abrir contenido|Ouvrir un média|Medien öffnen|打开媒体|メディアを開く
+Video and audio|Vídeo e áudio|Vídeo y audio|Vidéo et audio|Video und Audio|视频和音频|映像と音声
+All files|Todos os arquivos|Todos los archivos|Tous les fichiers|Alle Dateien|所有文件|すべてのファイル
+Video exported.|Vídeo exportado.|Vídeo exportado.|Vidéo exportée.|Video exportiert.|视频已导出。|動画を書き出しました。
+Automatic|Automático|Automático|Automatique|Automatisch|自动|自動
+Display rate|Taxa da tela|Frecuencia de pantalla|Fréquence de l’écran|Bildschirmfrequenz|显示器刷新率|画面のリフレッシュレート
+Original|Original|Original|Original|Original|原始|オリジナル
+Off|Desligado|Desactivado|Désactivé|Aus|关闭|オフ
+A · For 1080p sources|A · Para fontes 1080p|A · Para fuentes 1080p|A · Pour les sources 1080p|A · Für 1080p-Quellen|A · 适用于 1080p 源|A · 1080pソース向け
+B · For 720p sources|B · Para fontes 720p|B · Para fuentes 720p|B · Pour les sources 720p|B · Für 720p-Quellen|B · 适用于 720p 源|B · 720pソース向け
+C · For 480p sources|C · Para fontes 480p|C · Para fuentes 480p|C · Pour les sources 480p|C · Für 480p-Quellen|C · 适用于 480p 源|C · 480pソース向け
+Your anime session|Sua sessão de anime|Tu sesión de anime|Votre session anime|Deine Anime-Session|你的动漫时间|アニメを楽しもう
+Queued episodes|Episódios na fila|Episodios en cola|Épisodes en file d’attente|Episoden in der Warteschlange|队列中的剧集|キュー内のエピソード
+Audio and subtitles|Áudio e legendas|Audio y subtítulos|Audio et sous-titres|Audio und Untertitel|音频与字幕|音声と字幕
+Keep watching|Continuar assistindo|Seguir viendo|Reprendre la lecture|Weiterschauen|继续观看|視聴を続ける
+Return to full-screen video|Voltar ao vídeo em tela cheia|Volver al vídeo a pantalla completa|Revenir à la vidéo en plein écran|Zum Vollbildvideo zurückkehren|返回全屏视频|全画面の動画に戻る
+Choose a video file|Escolher um arquivo de vídeo|Elegir un archivo de vídeo|Choisir un fichier vidéo|Videodatei auswählen|选择视频文件|動画ファイルを選択
+Choose from the playback queue|Escolher na fila de reprodução|Elegir en la cola de reproducción|Choisir dans la file de lecture|Aus der Wiedergabeliste auswählen|从播放队列中选择|再生キューから選択
+Switch episode tracks|Trocar as faixas do episódio|Cambiar las pistas del episodio|Changer les pistes de l’épisode|Episodenspuren wechseln|切换剧集轨道|エピソードのトラックを切り替える
+Select the frame rate|Selecionar a taxa de quadros|Seleccionar la frecuencia de fotogramas|Choisir la cadence d’images|Bildrate auswählen|选择帧率|フレームレートを選択
+Adjust GPU upscaling|Ajustar o upscaling na GPU|Ajustar el escalado en la GPU|Régler la mise à l’échelle sur le GPU|GPU-Skalierung einstellen|调整 GPU 超分辨率|GPUアップスケーリングを調整
+Open another episode|Abrir outro episódio|Abrir otro episodio|Ouvrir un autre épisode|Weitere Episode öffnen|打开另一集|別のエピソードを開く
+Return to the player window|Voltar à janela do player|Volver a la ventana del reproductor|Revenir à la fenêtre du lecteur|Zum Playerfenster zurückkehren|返回播放器窗口|プレーヤーウィンドウに戻る
+Quit Ani Player|Sair do Ani Player|Salir de Ani Player|Quitter Ani Player|Ani Player beenden|退出 Ani Player|Ani Playerを終了
+Close the program|Fechar o programa|Cerrar el programa|Fermer le programme|Programm schließen|关闭程序|プログラムを閉じる
+GPU interpolation|Interpolação na GPU|Interpolación en la GPU|Interpolation sur le GPU|GPU-Interpolation|GPU 插帧|GPUフレーム補間
+Back to home|Voltar ao início|Volver al inicio|Revenir à l’accueil|Zurück zur Startseite|返回主页|ホームに戻る
+Full-screen menu|Menu de tela cheia|Menú de pantalla completa|Menu plein écran|Vollbildmenü|全屏菜单|全画面メニュー
+FULL SCREEN|TELA CHEIA|PANTALLA COMPLETA|PLEIN ÉCRAN|VOLLBILD|全屏|全画面
+Back|Voltar|Volver|Retour|Zurück|返回|戻る
+Arrows / D-pad  Navigate|Setas / direcional  Navegar|Flechas / cruceta  Navegar|Flèches / croix  Naviguer|Pfeiltasten / Steuerkreuz  Navigieren|方向键 / 十字键  导航|矢印キー／方向パッド  移動
+Enter / A  Select|Enter / A  Selecionar|Intro / A  Seleccionar|Entrée / A  Sélectionner|Eingabe / A  Auswählen|Enter / A  选择|Enter／A  選択
+Esc / B  Exit full screen|Esc / B  Sair da tela cheia|Esc / B  Salir de pantalla completa|Échap / B  Quitter le plein écran|Esc / B  Vollbild verlassen|Esc / B  退出全屏|Esc／B  全画面を終了
+Esc / B  Back|Esc / B  Voltar|Esc / B  Volver|Échap / B  Retour|Esc / B  Zurück|Esc / B  返回|Esc／B  戻る
+Quick access|Acesso rápido|Acceso rápido|Accès rapide|Schnellzugriff|快速访问|クイックアクセス
+NOW PLAYING|EM REPRODUÇÃO|EN REPRODUCCIÓN|LECTURE EN COURS|LÄUFT GERADE|正在播放|再生中
+Choose an episode to get started.|Escolha um episódio para começar.|Elige un episodio para empezar.|Choisissez un épisode pour commencer.|Wähle eine Episode, um zu beginnen.|选择剧集开始观看。|エピソードを選択して視聴を始めましょう。
+Preparing the player…|Preparando o player…|Preparando el reproductor…|Préparation du lecteur…|Player wird vorbereitet…|正在准备播放器…|プレーヤーを準備中…
+Active|Ativo|Activo|Actif|Aktiv|已启用|有効
+Settings|Configurações|Ajustes|Paramètres|Einstellungen|设置|設定
+Make adjustments while watching the episode.|Ajuste enquanto assiste ao episódio.|Ajusta las opciones mientras ves el episodio.|Ajustez les options pendant l’épisode.|Nimm Einstellungen vor, während du die Episode ansiehst.|观看剧集时可调整设置。|エピソードの視聴中に設定を調整できます。
+Parent folder|Pasta anterior|Carpeta superior|Dossier parent|Übergeordneter Ordner|上级文件夹|親フォルダー
+Delete this folder|Excluir esta pasta|Eliminar esta carpeta|Supprimer ce dossier|Diesen Ordner löschen|删除此文件夹|このフォルダーを削除
+Add episodes|Adicionar episódios|Añadir episodios|Ajouter des épisodes|Episoden hinzufügen|添加剧集|エピソードを追加
+Shuffle queue|Embaralhar fila|Mezclar cola|Mélanger la file|Warteschlange mischen|随机排列队列|キューをシャッフル
+Open M3U playlist|Abrir playlist M3U|Abrir lista M3U|Ouvrir une liste M3U|M3U-Wiedergabeliste öffnen|打开 M3U 播放列表|M3Uプレイリストを開く
+M3U playlist|Playlist M3U|Lista M3U|Liste M3U|M3U-Wiedergabeliste|M3U 播放列表|M3Uプレイリスト
+New folder|Nova pasta|Nueva carpeta|Nouveau dossier|Neuer Ordner|新建文件夹|新しいフォルダー
+Anime or season|Anime ou temporada|Anime o temporada|Anime ou saison|Anime oder Staffel|动漫或季度|アニメまたはシーズン
+Create|Criar|Crear|Créer|Erstellen|创建|作成
+This folder has no episodes yet.|Esta pasta ainda não tem episódios.|Esta carpeta aún no tiene episodios.|Ce dossier ne contient pas encore d’épisodes.|Dieser Ordner enthält noch keine Episoden.|此文件夹中还没有剧集。|このフォルダーにはまだエピソードがありません。
+Add files or move episodes from another folder.|Adicione arquivos ou mova episódios de outra pasta.|Añade archivos o mueve episodios desde otra carpeta.|Ajoutez des fichiers ou déplacez des épisodes depuis un autre dossier.|Füge Dateien hinzu oder verschiebe Episoden aus einem anderen Ordner.|添加文件或从其他文件夹移动剧集。|ファイルを追加するか、別のフォルダーからエピソードを移動してください。
+File not found. Check that the drive is connected.|O arquivo não foi encontrado. Verifique se a unidade está conectada.|No se encontró el archivo. Comprueba que la unidad esté conectada.|Fichier introuvable. Vérifiez que le lecteur est connecté.|Datei nicht gefunden. Prüfe, ob das Laufwerk verbunden ist.|找不到文件。请检查驱动器是否已连接。|ファイルが見つかりません。ドライブが接続されているか確認してください。
+Move to folder|Mover para pasta|Mover a carpeta|Déplacer vers un dossier|In Ordner verschieben|移动到文件夹|フォルダーに移動
+All anime|Todos os animes|Todos los animes|Tous les animes|Alle Anime|所有动漫|すべてのアニメ
+Remove from library|Remover da biblioteca|Quitar de la biblioteca|Retirer de la bibliothèque|Aus der Mediathek entfernen|从媒体库移除|ライブラリから削除
+Hover to preview scenes. Right-click to move episodes between folders.|Passe o mouse para ver momentos do episódio. Botão direito para mover entre pastas.|Pasa el cursor para ver escenas. Haz clic derecho para mover episodios entre carpetas.|Survolez pour voir des extraits. Faites un clic droit pour déplacer les épisodes.|Fahre für eine Vorschau darüber. Rechtsklick verschiebt Episoden zwischen Ordnern.|悬停预览片段，右键可在文件夹间移动剧集。|カーソルを合わせるとプレビューを表示します。右クリックでフォルダー間を移動できます。
+LIBRARY|BIBLIOTECA|BIBLIOTECA|BIBLIOTHÈQUE|MEDIATHEK|媒体库|ライブラリ
+Delete folder?|Excluir pasta?|¿Eliminar carpeta?|Supprimer le dossier ?|Ordner löschen?|删除文件夹？|フォルダーを削除しますか？
+The folder and its subfolders will be removed from the library. Episodes will move to the parent folder.|A pasta e suas subpastas sairão da biblioteca. Os episódios serão movidos para a pasta anterior.|La carpeta y sus subcarpetas se quitarán de la biblioteca. Los episodios pasarán a la carpeta superior.|Le dossier et ses sous-dossiers seront retirés de la bibliothèque. Les épisodes seront déplacés vers le dossier parent.|Der Ordner und seine Unterordner werden aus der Mediathek entfernt. Die Episoden kommen in den übergeordneten Ordner.|文件夹及其子文件夹将从媒体库中移除。剧集将移至上级文件夹。|フォルダーとそのサブフォルダーをライブラリから削除します。エピソードは親フォルダーに移動します。
+Delete folder|Excluir pasta|Eliminar carpeta|Supprimer le dossier|Ordner löschen|删除文件夹|フォルダーを削除
+Cancel|Cancelar|Cancelar|Annuler|Abbrechen|取消|キャンセル
+File unavailable|Arquivo indisponível|Archivo no disponible|Fichier indisponible|Datei nicht verfügbar|文件不可用|ファイルを利用できません
+Now playing|Em reprodução|En reproducción|Lecture en cours|Läuft gerade|正在播放|再生中
+Play episode|Reproduzir episódio|Reproducir episodio|Lire l’épisode|Episode abspielen|播放剧集|エピソードを再生
+Episodes|episódios|episodios|épisodes|Episoden|集|話
+Delete|Excluir|Eliminar|Supprimer|Löschen|删除|削除
+Delete folder from library|Excluir pasta da biblioteca|Eliminar carpeta de la biblioteca|Supprimer le dossier de la bibliothèque|Ordner aus der Mediathek löschen|从媒体库删除文件夹|ライブラリからフォルダーを削除
+Unavailable|Indisponível|No disponible|Indisponible|Nicht verfügbar|不可用|利用できません
+No preview|Sem prévia|Sin vista previa|Aucun aperçu|Keine Vorschau|无预览|プレビューなし
+Ani Player Setup|Instalador do Ani Player|Instalador de Ani Player|Installation d’Ani Player|Ani Player Setup|Ani Player 安装程序|Ani Player セットアップ
+Close Ani Player and try again.|Feche o Ani Player e tente novamente.|Cierra Ani Player y vuelve a intentarlo.|Fermez Ani Player et réessayez.|Schließe Ani Player und versuche es erneut.|请关闭 Ani Player 后重试。|Ani Playerを閉じてから再試行してください。
+Installation was interrupted.|A instalação foi interrompida.|Se interrumpió la instalación.|L’installation a été interrompue.|Die Installation wurde unterbrochen.|安装已中断。|インストールが中断されました。
+ANI PLAYER   /   SETUP|ANI PLAYER   /   INSTALAÇÃO|ANI PLAYER   /   INSTALACIÓN|ANI PLAYER   /   INSTALLATION|ANI PLAYER   /   INSTALLATION|ANI PLAYER   /   安装|ANI PLAYER   /   セットアップ
+Your anime player for Windows|Seu player de anime para Windows|Tu reproductor de anime para Windows|Votre lecteur d’anime pour Windows|Dein Anime-Player für Windows|你的 Windows 动漫播放器|Windows向けアニメプレーヤー
+All set|Tudo pronto|Todo listo|Tout est prêt|Alles bereit|安装完成|準備完了
+Installing Ani Player…|Instalando o Ani Player…|Instalando Ani Player…|Installation d’Ani Player…|Ani Player wird installiert…|正在安装 Ani Player…|Ani Playerをインストール中…
+Installation interrupted|Instalação interrompida|Instalación interrumpida|Installation interrompue|Installation unterbrochen|安装中断|インストール中断
+Install Ani Player|Instalar o Ani Player|Instalar Ani Player|Installer Ani Player|Ani Player installieren|安装 Ani Player|Ani Playerをインストール
+Open the player now or find it in the Start menu.|Abra o player agora ou encontre-o no menu Iniciar.|Abre el reproductor ahora o búscalo en el menú Inicio.|Ouvrez le lecteur maintenant ou retrouvez-le dans le menu Démarrer.|Öffne den Player jetzt oder finde ihn im Startmenü.|立即打开播放器，或在开始菜单中找到它。|今すぐ開くか、スタートメニューから起動できます。
+Preparing the installation package…|Preparando o pacote de instalação…|Preparando el paquete de instalación…|Préparation du paquet d’installation…|Installationspaket wird vorbereitet…|正在准备安装包…|インストールパッケージを準備中…
+Extracting the player and video components…|Extraindo o player e os componentes de vídeo…|Extrayendo el reproductor y los componentes de vídeo…|Extraction du lecteur et des composants vidéo…|Player und Videokomponenten werden entpackt…|正在解压播放器和视频组件…|プレーヤーと動画コンポーネントを展開中…
+Setting up shortcuts and uninstallation…|Configurando os atalhos e a desinstalação…|Configurando accesos directos y la desinstalación…|Configuration des raccourcis et de la désinstallation…|Verknüpfungen und Deinstallation werden eingerichtet…|正在设置快捷方式和卸载选项…|ショートカットとアンインストールを設定中…
+Includes playback, Anime4K and RIFE interpolation.|Inclui reprodução, Anime4K e interpolação RIFE.|Incluye reproducción, Anime4K e interpolación RIFE.|Comprend la lecture, Anime4K et l’interpolation RIFE.|Enthält Wiedergabe, Anime4K und RIFE-Interpolation.|包含播放、Anime4K 和 RIFE 插帧。|再生機能、Anime4K、RIFEフレーム補間が含まれます。
+{n}% complete|{n}% concluído|{n}% completado|{n} % terminé|{n} % abgeschlossen|已完成 {n}%|{n}% 完了
+Create a desktop shortcut|Criar atalho na área de trabalho|Crear un acceso directo en el escritorio|Créer un raccourci sur le bureau|Desktopverknüpfung erstellen|创建桌面快捷方式|デスクトップにショートカットを作成
+Installing…|Instalando…|Instalando…|Installation…|Wird installiert…|正在安装…|インストール中…
+Open Ani Player|Abrir Ani Player|Abrir Ani Player|Ouvrir Ani Player|Ani Player öffnen|打开 Ani Player|Ani Playerを開く
+Try again|Tentar novamente|Volver a intentar|Réessayer|Erneut versuchen|重试|再試行
+Install|Instalar|Instalar|Installer|Installieren|安装|インストール
+Could not open Ani Player.|Não foi possível abrir o Ani Player.|No se pudo abrir Ani Player.|Impossible d’ouvrir Ani Player.|Ani Player konnte nicht geöffnet werden.|无法打开 Ani Player。|Ani Playerを開けませんでした。
+VERSION|VERSÃO|VERSIÓN|VERSION|VERSION|版本|バージョン
+Installation folder|Pasta de instalação|Carpeta de instalación|Dossier d’installation|Installationsordner|安装文件夹|インストール先フォルダー
+Change…|Alterar…|Cambiar…|Modifier…|Ändern…|更改…|変更…
+Choose where to create the Ani Player folder|Escolha onde criar a pasta Ani Player|Elige dónde crear la carpeta Ani Player|Choisissez où créer le dossier Ani Player|Speicherort für den Ordner Ani Player auswählen|选择创建 Ani Player 文件夹的位置|Ani Playerフォルダーの作成先を選択
+Invalid package. Open a complete copy of the installer.|Pacote inválido. Abra uma cópia completa do instalador.|Paquete inválido. Abre una copia completa del instalador.|Paquet invalide. Ouvrez une copie complète du programme d’installation.|Ungültiges Paket. Öffne eine vollständige Kopie des Installers.|安装包无效。请打开完整的安装程序。|パッケージが無効です。完全なインストーラーを開いてください。
+Could not install.|Não foi possível instalar.|No se pudo instalar.|Impossible d’installer.|Installation fehlgeschlagen.|安装失败。|インストールできませんでした。
+Windows video window is unavailable.|Janela do Windows indisponível.|La ventana de vídeo de Windows no está disponible.|La fenêtre vidéo Windows est indisponible.|Das Windows-Videofenster ist nicht verfügbar.|Windows 视频窗口不可用。|Windowsの動画ウィンドウを利用できません。
+The library is open in another window or cannot be written to.|A biblioteca está aberta em outra janela ou sem permissão de gravação.|La biblioteca está abierta en otra ventana o no se puede escribir en ella.|La bibliothèque est ouverte dans une autre fenêtre ou n’est pas accessible en écriture.|Die Mediathek ist in einem anderen Fenster geöffnet oder schreibgeschützt.|媒体库已在其他窗口打开，或无法写入。|ライブラリが別のウィンドウで開かれているか、書き込みできません。
+Invalid library format. The original file was preserved.|Estrutura da biblioteca inválida. O arquivo original foi preservado.|El formato de la biblioteca no es válido. Se conservó el archivo original.|Format de bibliothèque non valide. Le fichier original a été conservé.|Ungültiges Mediathekformat. Die Originaldatei wurde beibehalten.|媒体库格式无效。原始文件已保留。|ライブラリの形式が無効です。元のファイルは保持されました。
+Invalid configuration folder.|Pasta de configuração inválida.|Carpeta de configuración no válida.|Dossier de configuration non valide.|Ungültiger Konfigurationsordner.|配置文件夹无效。|設定フォルダーが無効です。
+Could not save the library.|Não foi possível salvar a biblioteca.|No se pudo guardar la biblioteca.|Impossible d’enregistrer la bibliothèque.|Die Mediathek konnte nicht gespeichert werden.|无法保存媒体库。|ライブラリを保存できませんでした。
+Invalid shader path.|Caminho dos shaders inválido.|Ruta de sombreadores no válida.|Chemin des shaders non valide.|Ungültiger Shaderpfad.|着色器路径无效。|シェーダーのパスが無効です。
+Preview unavailable.|Prévia indisponível.|Vista previa no disponible.|Aperçu indisponible.|Vorschau nicht verfügbar.|预览不可用。|プレビューを利用できません。
+Preview cancelled.|Prévia cancelada.|Vista previa cancelada.|Aperçu annulé.|Vorschau abgebrochen.|预览已取消。|プレビューをキャンセルしました。
+No preview.|Sem prévia.|Sin vista previa.|Aucun aperçu.|Keine Vorschau.|无预览。|プレビューはありません。
+mpv closed the connection.|O mpv encerrou a conexão.|mpv cerró la conexión.|mpv a fermé la connexion.|mpv hat die Verbindung geschlossen.|mpv 已关闭连接。|mpvが接続を終了しました。
+Could not open media.|Falha ao abrir a mídia.|No se pudo abrir el contenido.|Impossible d’ouvrir le média.|Medien konnten nicht geöffnet werden.|无法打开媒体。|メディアを開けませんでした。
+mpv not found at {path}|mpv não encontrado em {path}|No se encontró mpv en {path}|mpv introuvable à l’emplacement {path}|mpv nicht gefunden unter {path}|在 {path} 找不到 mpv|{path} にmpvが見つかりません
+mpv did not establish a connection.|O mpv não iniciou a conexão.|mpv no estableció la conexión.|mpv n’a pas établi la connexion.|mpv hat keine Verbindung aufgebaut.|mpv 未建立连接。|mpvが接続を確立できませんでした。
+Invalid mpv path.|Caminho do mpv inválido.|Ruta de mpv no válida.|Chemin de mpv non valide.|Ungültiger mpv-Pfad.|mpv 路径无效。|mpvのパスが無効です。
+RIFE requires VapourSynth and the 4.16 Lite model.|RIFE requer VapourSynth e o modelo 4.16 Lite.|RIFE requiere VapourSynth y el modelo 4.16 Lite.|RIFE nécessite VapourSynth et le modèle 4.16 Lite.|RIFE benötigt VapourSynth und das Modell 4.16 Lite.|RIFE 需要 VapourSynth 和 4.16 Lite 模型。|RIFEにはVapourSynthと4.16 Liteモデルが必要です。
+Choose a destination different from the original file.|Escolha um destino diferente do arquivo original.|Elige un destino distinto del archivo original.|Choisissez une destination différente du fichier original.|Wähle ein anderes Ziel als die Originaldatei.|请选择与原文件不同的保存位置。|元のファイルとは別の保存先を選択してください。
+Invalid destination.|Destino inválido.|Destino no válido.|Destination non valide.|Ungültiges Ziel.|目标位置无效。|保存先が無効です。
+Export failed.|Falha na exportação.|Error en la exportación.|Échec de l’exportation.|Export fehlgeschlagen.|导出失败。|書き出しに失敗しました。
+The HLS server has stopped.|Servidor HLS encerrado.|El servidor HLS se ha detenido.|Le serveur HLS s’est arrêté.|Der HLS-Server wurde beendet.|HLS 服务器已停止。|HLSサーバーが停止しました。
+Encoder failed.|Falha no encoder.|Error del codificador.|Échec de l’encodeur.|Encoder fehlgeschlagen.|编码器发生错误。|エンコーダーでエラーが発生しました。
+Invalid installation folder.|A pasta de instalação é inválida.|La carpeta de instalación no es válida.|Le dossier d’installation n’est pas valide.|Ungültiger Installationsordner.|安装文件夹无效。|インストール先フォルダーが無効です。
+The installation folder links to another location.|A pasta de instalação é um link para outro local.|La carpeta de instalación enlaza a otra ubicación.|Le dossier d’installation pointe vers un autre emplacement.|Der Installationsordner verweist auf einen anderen Speicherort.|安装文件夹指向其他位置。|インストール先フォルダーが別の場所を参照しています。
+The package is empty.|O pacote está vazio.|El paquete está vacío.|Le paquet est vide.|Das Paket ist leer.|安装包为空。|パッケージが空です。
+The package contains an invalid path.|O pacote contém um caminho inválido.|El paquete contiene una ruta no válida.|Le paquet contient un chemin non valide.|Das Paket enthält einen ungültigen Pfad.|安装包包含无效路径。|パッケージに無効なパスが含まれています。
+Another installation is already in progress.|Já há outra instalação em andamento.|Ya hay otra instalación en curso.|Une autre installation est déjà en cours.|Eine andere Installation läuft bereits.|已有其他安装正在运行。|別のインストールがすでに進行中です。
+The folder does not match the installation registered with Windows.|A pasta não corresponde à instalação registrada no Windows.|La carpeta no coincide con la instalación registrada en Windows.|Le dossier ne correspond pas à l’installation enregistrée dans Windows.|Der Ordner entspricht nicht der in Windows registrierten Installation.|该文件夹与 Windows 中登记的安装不符。|Windowsに登録されたインストール先と一致しません。
+Choose a valid installation folder.|Escolha uma pasta de instalação válida.|Elige una carpeta de instalación válida.|Choisissez un dossier d’installation valide.|Wähle einen gültigen Installationsordner.|请选择有效的安装文件夹。|有効なインストール先フォルダーを選択してください。
+To change the location, uninstall Ani Player from Installed apps, then run setup again.|Para mudar de local, desinstale o Ani Player em Aplicativos instalados e execute o instalador novamente.|Para cambiar la ubicación, desinstala Ani Player en Aplicaciones instaladas y vuelve a ejecutar el instalador.|Pour changer l’emplacement, désinstallez Ani Player dans Applications installées, puis relancez l’installation.|Um den Speicherort zu ändern, deinstalliere Ani Player unter Installierte Apps und starte das Setup erneut.|如需更改位置，请在“已安装的应用”中卸载 Ani Player，再运行安装程序。|場所を変更するには、インストールされているアプリからAni Playerをアンインストールし、セットアップを再実行してください。
+The destination folder already exists and belongs to another installation.|A pasta de destino já existe e pertence a outra instalação.|La carpeta de destino ya existe y pertenece a otra instalación.|Le dossier de destination existe déjà et appartient à une autre installation.|Der Zielordner existiert bereits und gehört zu einer anderen Installation.|目标文件夹已存在，并属于其他安装。|保存先フォルダーはすでに存在し、別のインストールで使用されています。
+The installation package is incomplete.|Pacote de instalação incompleto.|El paquete de instalación está incompleto.|Le paquet d’installation est incomplet.|Das Installationspaket ist unvollständig.|安装包不完整。|インストールパッケージが不完全です。
+{elapsed} of {duration}|{elapsed} de {duration}|{elapsed} de {duration}|{elapsed} sur {duration}|{elapsed} von {duration}|{elapsed} / {duration}|{elapsed} / {duration}
+Update available|Atualização disponível|Actualización disponible|Mise à jour disponible|Update verfügbar|有可用更新|アップデートがあります
+Version {version} is available. Would you like to update?|A versão {version} está disponível. Deseja atualizar?|La versión {version} está disponible. ¿Quieres actualizar?|La version {version} est disponible. Voulez-vous mettre à jour ?|Version {version} ist verfügbar. Möchtest du aktualisieren?|版本 {version} 已发布。是否更新？|バージョン {version} を利用できます。更新しますか？
+Download update|Baixar atualização|Descargar actualización|Télécharger la mise à jour|Update herunterladen|下载更新|アップデートをダウンロード
+Later|Mais tarde|Más tarde|Plus tard|Später|稍后|後で
+Video is playing in the playback window.|O vídeo está na janela de reprodução.|El vídeo se reproduce en su propia ventana.|La vidéo est dans la fenêtre de lecture.|Das Video läuft im Wiedergabefenster.|视频正在播放窗口中播放。|動画は再生ウィンドウに表示されています。

@@ -1,0 +1,73 @@
+name: Packages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libxkbcommon-dev libwayland-dev libgl1-mesa-dev mpv ffmpeg python3 xvfb
+      - run: rustup update stable
+      - run: cargo +stable test --release --locked
+      - run: cargo +stable test --release --locked playback_motion_export_and_stream -- --ignored
+      - run: cargo +stable build --release --locked
+      - run: |
+          curl -fL --retry 3 https://github.com/AppImage/appimagetool/releases/download/1.9.0/appimagetool-x86_64.AppImage -o "$RUNNER_TEMP/appimagetool"
+          chmod +x "$RUNNER_TEMP/appimagetool"
+          APPIMAGETOOL="$RUNNER_TEMP/appimagetool" bash installer/linux.sh
+          APPIMAGE_EXTRACT_AND_RUN=1 ANI_PLAYER_CONFIG="$RUNNER_TEMP/ani-config" ANI_PREVIEW="$RUNNER_TEMP/ani-linux.png" timeout 30s xvfb-run -a dist/*.AppImage
+          test -s "$RUNNER_TEMP/ani-linux.png"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: dist/*.AppImage
+          if-no-files-found: error
+
+  macos:
+    runs-on: macos-15
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '12.0'
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup update stable && rustup target add --toolchain stable aarch64-apple-darwin x86_64-apple-darwin
+      - run: cargo +stable test --release --locked
+      - run: |
+          cargo +stable build --release --locked --target aarch64-apple-darwin
+          cargo +stable build --release --locked --target x86_64-apple-darwin
+          bash installer/macos.sh
+          pkgutil --expand-full dist/*.pkg "$RUNNER_TEMP/pkg"
+          lipo -verify_arch arm64 x86_64 "$RUNNER_TEMP/pkg/Payload/Ani Player.app/Contents/MacOS/ani-player"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos
+          path: dist/*.pkg
+          if-no-files-found: error
+
+  windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup update stable
+      - run: cargo +stable test --release --locked --features windows-setup
+      - run: cargo +stable build --release --locked
+      - shell: pwsh
+        run: |
+          $version = (cargo +stable metadata --locked --no-deps --format-version 1 | ConvertFrom-Json).packages[0].version
+          New-Item -ItemType Directory -Force dist,dist/stage | Out-Null
+          Copy-Item 'target/release/ani-player.exe' 'dist/stage/Ani Player.exe'
+          Copy-Item 'assets/i18n/Noto-OFL.txt' 'dist/stage/'
+          Copy-Item 'assets/anime4k/LICENSE' 'dist/stage/Anime4K-LICENSE'
+          Compress-Archive -Path 'dist/stage/*' -DestinationPath "dist/Ani-Player-$version-windows-x64.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: dist/*.zip
+          if-no-files-found: error
