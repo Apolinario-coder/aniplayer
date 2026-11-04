@@ -43,7 +43,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: rustup update stable && rustup target add --toolchain stable aarch64-apple-darwin x86_64-apple-darwin
+      - run: brew install mpv ffmpeg
       - run: cargo +stable test --release --locked
+      - run: cargo +stable test --release --locked playback_motion_export_and_stream -- --ignored
       - run: |
           cargo +stable build --release --locked --target aarch64-apple-darwin
           cargo +stable build --release --locked --target x86_64-apple-darwin
