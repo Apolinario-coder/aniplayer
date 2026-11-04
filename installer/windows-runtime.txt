@@ -1,0 +1,13 @@
+mpv.7z|84397be53b37945b9dccdb7e8d8579eb431091d26ab362d111da68c3d4482ffa|https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20261104/mpv-x86_64-20261104-git-46787be250.7z
+ffmpeg.7z|177273d804bfe3340966d3b358867220682172f2218bba9619e9823e77b1ee49|https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20261104/ffmpeg-x86_64-git-200a98d5b.7z
+vs.zip|625b3410d903943107291592e90d6f521f829ebb8291d952ee91b8d674bbb153|https://github.com/vapoursynth/vapoursynth/releases/download/R79/VapourSynth64-Portable-R79.zip
+python.zip|4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3|https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip
+rife_vs.dll|36a25b471be88e6f915320c818022dc8657dd9beac22a8c3158bd7f4260cc410|https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/releases/download/r9_mod_v33/librife_windows_x86-64.dll
+flownet.bin|8f89c6efae10d648748610fe1ed146ea29f4028b9a0434724674a616ca084e5a|https://raw.githubusercontent.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/c3ec6aabc07c8fa37a4f58d7fed9e2ad1fc1b13f/models/rife-v4.16_lite_ensembleFalse/flownet.bin
+flownet.param|9f1018d743a40d774b5b2276bf7fdcf99417df2ef1486563f61723ae15bc149d|https://raw.githubusercontent.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/c3ec6aabc07c8fa37a4f58d7fed9e2ad1fc1b13f/models/rife-v4.16_lite_ensembleFalse/flownet.param
+yt-dlp.exe|33121d192d706e62f684a06f80918e3f3a8ba52ac3a65213b6951c39c7d9f555|https://github.com/yt-dlp/yt-dlp/releases/download/2026.10.21/yt-dlp.exe
+mpv-Copyright.txt|bfe9ee4cceabcb8ecbfadf208d04156f73d801e6a57369a5606bb8341e204a23|https://raw.githubusercontent.com/mpv-player/mpv/46787be250/Copyright
+mpv-GPL.txt|edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6|https://raw.githubusercontent.com/mpv-player/mpv/46787be250/LICENSE.GPL
+FFmpeg-COPYING.GPLv3.txt|8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903|https://raw.githubusercontent.com/FFmpeg/FFmpeg/200a98d5b/COPYING.GPLv3
+RIFE-LICENSE.txt|d37437f9a9276c5b5f966a4a314c8b08128b06d3fa5b7b5716b8db489dc4136a|https://raw.githubusercontent.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/c3ec6aabc07c8fa37a4f58d7fed9e2ad1fc1b13f/LICENSE
+yt-dlp-LICENSE.txt|7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c|https://raw.githubusercontent.com/yt-dlp/yt-dlp/2026.10.21/LICENSE

@@ -7,6 +7,10 @@ stage=$(mktemp -d)
 trap 'rm -rf "$stage"' EXIT
 app="$stage/AniPlayer.AppDir"
 install -Dm755 target/release/ani-player "$app/usr/bin/ani-player"
+if [[ -n ${ANI_LINUX_MEDIA_DIR:-} ]]; then
+  source installer/bundle-media.sh
+  bundle_media "$ANI_LINUX_MEDIA_DIR" "$app/usr/lib/ani-player/media" librife.so
+fi
 for soname in libxkbcommon-x11.so.0 libxkbcommon.so.0 libxcb-xkb.so.1; do
   library=$(ldconfig -p | awk -v name="$soname" '$1 == name && !seen++ {print $NF}')
   test -n "$library"
@@ -32,6 +36,9 @@ cat > "$app/AppRun" <<'EOF'
 #!/bin/sh
 HERE=$(dirname "$(readlink -f "$0")")
 export LD_LIBRARY_PATH="$HERE/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+if [ -d "$HERE/usr/lib/ani-player/media" ]; then
+  export ANI_MEDIA_DIR="$HERE/usr/lib/ani-player/media"
+fi
 exec "$HERE/usr/bin/ani-player" "$@"
 EOF
 chmod +x "$app/AppRun"

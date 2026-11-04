@@ -42,6 +42,14 @@ fn tool(name: &str) -> PathBuf {
         .unwrap_or_else(|| name.into())
 }
 
+#[cfg(unix)]
+fn media_tool(name: &str) -> PathBuf {
+    env::var_os("ANI_MEDIA_DIR")
+        .map(PathBuf::from)
+        .map(|root| root.join("bin").join(name))
+        .unwrap_or_else(|| tool(name))
+}
+
 #[derive(Clone, Copy)]
 pub enum Output {
     #[cfg(test)]
@@ -111,7 +119,7 @@ impl Paths {
                         }
                     }
                     #[cfg(unix)]
-                    tool("mpv")
+                    media_tool("mpv")
                 }),
             ffmpeg: env::var_os("ANI_FFMPEG")
                 .map(PathBuf::from)
@@ -126,7 +134,7 @@ impl Paths {
                         }
                     }
                     #[cfg(unix)]
-                    tool("ffmpeg")
+                    media_tool("ffmpeg")
                 }),
             config: crate::i18n::config_dir(),
             app,
@@ -147,7 +155,7 @@ impl Paths {
                     }
                 }
                 #[cfg(unix)]
-                tool("python3")
+                media_tool("python3")
             })
     }
 }
@@ -329,7 +337,7 @@ fn run(
     #[cfg(windows)]
     let tube_dir = Some(engine_dir.join("../extensions/tube"));
     #[cfg(unix)]
-    let tube_dir: Option<PathBuf> = None;
+    let tube_dir = env::var_os("ANI_MEDIA_DIR").map(|root| PathBuf::from(root).join("bin"));
     let search_path = env::join_paths(
         [paths.app.clone()]
             .into_iter()
@@ -356,6 +364,13 @@ fn run(
     command
         .arg(format!("--input-ipc-server={pipe_path}"))
         .current_dir(engine_dir);
+    #[cfg(windows)]
+    {
+        let script = engine_dir.join("Lib/site-packages/vapoursynth/vsscript.dll");
+        if script.is_file() && env::var_os("VSSCRIPT_PATH").is_none() {
+            command.env("VSSCRIPT_PATH", script);
+        }
+    }
     #[cfg(unix)]
     command
         .arg("--input-ipc-client=fd://0")

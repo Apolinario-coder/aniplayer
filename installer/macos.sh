@@ -6,11 +6,22 @@ stage=$(mktemp -d)
 trap 'rm -rf "$stage"' EXIT
 app="$stage/root/Ani Player.app/Contents"
 mkdir -p "$app/MacOS" "$app/Resources" "$stage/AniPlayer.iconset" dist
+if [[ -n ${ANI_MAC_MEDIA_DIR:-} ]]; then
+  source installer/bundle-media.sh
+  for arch in arm64 x86_64; do
+    bundle_media "$ANI_MAC_MEDIA_DIR/$arch" "$app/Resources/media/$arch" librife.dylib
+  done
+fi
 lipo -create target/aarch64-apple-darwin/release/ani-player target/x86_64-apple-darwin/release/ani-player -output "$app/MacOS/ani-player"
 chmod +x "$app/MacOS/ani-player"
 cat > "$app/MacOS/launch" <<'EOF'
 #!/bin/sh
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+media="$(dirname "$0")/../Resources/media/$(uname -m)"
+if [ -d "$media" ]; then
+  ANI_MEDIA_DIR=$(cd "$media" && pwd -P)
+  export ANI_MEDIA_DIR
+fi
 exec "$(dirname "$0")/ani-player" "$@"
 EOF
 chmod +x "$app/MacOS/launch"

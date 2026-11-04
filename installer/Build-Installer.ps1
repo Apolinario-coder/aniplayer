@@ -1,8 +1,9 @@
-param([string]$RuntimeRoot = (Join-Path $PSScriptRoot '..\..'), [switch]$SystemRuntime)
+param([string]$RuntimeRoot = (Join-Path $PSScriptRoot '..\..'), [switch]$SystemRuntime, [switch]$ReleaseRuntime)
 
 $ErrorActionPreference = 'Stop'
 $project = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
-if (!$SystemRuntime) { $RuntimeRoot = (Resolve-Path -LiteralPath $RuntimeRoot).Path }
+if ($SystemRuntime -and $ReleaseRuntime) { throw 'Choose one runtime mode.' }
+if (!$SystemRuntime -and !$ReleaseRuntime) { $RuntimeRoot = (Resolve-Path -LiteralPath $RuntimeRoot).Path }
 $cargo = Get-Command cargo.exe -ErrorAction SilentlyContinue
 if ($cargo) {
     $cargoPath = $cargo.Source
@@ -19,7 +20,7 @@ $release = Join-Path $project 'target\release'
 $work = Join-Path $project ('target\setup-' + [guid]::NewGuid().ToString('N'))
 $stage = Join-Path $work 'payload'
 $package = Join-Path $project 'Instalar Ani Player.exe'
-if ($SystemRuntime) {
+if ($SystemRuntime -or $ReleaseRuntime) {
     $version = (& $cargoPath metadata --locked --no-deps --format-version 1 --manifest-path (Join-Path $project 'Cargo.toml') | ConvertFrom-Json).packages[0].version
     if ($LASTEXITCODE -or !$version) { throw 'Unable to read the package version.' }
     $dist = New-Item -ItemType Directory -Force -Path (Join-Path $project 'dist')
@@ -28,7 +29,9 @@ if ($SystemRuntime) {
 New-Item -ItemType Directory -Path $stage | Out-Null
 try {
     Copy-Item -LiteralPath (Join-Path $release 'ani-player.exe') -Destination (Join-Path $stage 'Ani Player.exe')
-    if (!$SystemRuntime) {
+    if ($ReleaseRuntime) {
+        & (Join-Path $PSScriptRoot 'Prepare-WindowsRuntime.ps1') -Destination $stage -Cache (Join-Path $project 'target/public-runtime') -Scratch (Join-Path $work 'runtime')
+    } elseif (!$SystemRuntime) {
         Copy-Item -LiteralPath (Join-Path $release 'yt-dlp.exe') -Destination $stage
 
         function Copy-Runtime([string]$RelativePath) {
@@ -49,8 +52,8 @@ try {
             'licenses\ffmpeg-lgpl.txt', 'licenses\Python license.txt', 'licenses\RIFE_license.txt',
             'licenses\yt_dlp_license.txt', 'licenses\deno_license.txt'
         )) { Copy-Runtime $path }
-        New-Item -ItemType File -Path (Join-Path $stage '.bundled-runtime') | Out-Null
     }
+    if (!$SystemRuntime) { New-Item -ItemType File -Path (Join-Path $stage '.bundled-runtime') | Out-Null }
     New-Item -ItemType Directory -Force -Path (Join-Path $stage 'licenses') | Out-Null
     Copy-Item -LiteralPath (Join-Path $project 'assets\anime4k\LICENSE') -Destination (Join-Path $stage 'licenses\Anime4K.txt')
     Copy-Item -LiteralPath (Join-Path $project 'assets\i18n\Noto-OFL.txt') -Destination (Join-Path $stage 'licenses')

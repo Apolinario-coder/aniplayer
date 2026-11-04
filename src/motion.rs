@@ -104,7 +104,10 @@ pub fn rife(paths: &Paths, target: Option<f64>) -> Result<String, String> {
             if cfg!(windows) {
                 paths.mpv.parent().unwrap_or(Path::new(".")).join("../rife")
             } else {
-                paths.config.join("rife")
+                std::env::var_os("ANI_MEDIA_DIR")
+                    .map(PathBuf::from)
+                    .unwrap_or_else(|| paths.config.clone())
+                    .join("rife")
             }
         });
     let plugin = root.join(if cfg!(windows) {
