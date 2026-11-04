@@ -8,13 +8,18 @@ use std::{
     process::{Child, Command},
     sync::mpsc::{self, Receiver, Sender},
     thread,
-    time::{Duration, Instant, SystemTime, UNIX_EPOCH},
+    time::{Duration, Instant},
 };
 
-#[cfg(unix)]
-use std::os::unix::net::UnixStream;
 #[cfg(windows)]
 use std::os::windows::{io::AsRawHandle, process::CommandExt};
+#[cfg(windows)]
+use std::time::{SystemTime, UNIX_EPOCH};
+#[cfg(unix)]
+use std::{
+    os::{fd::OwnedFd, unix::net::UnixStream},
+    process::Stdio,
+};
 
 pub trait QuietCommand {
     fn quiet(&mut self) -> &mut Self;
@@ -253,18 +258,6 @@ type Ipc = fs::File;
 #[cfg(unix)]
 type Ipc = UnixStream;
 
-#[cfg(unix)]
-struct Socket(PathBuf);
-#[cfg(unix)]
-impl Drop for Socket {
-    fn drop(&mut self) {
-        let _ = fs::remove_file(&self.0);
-        if let Some(parent) = self.0.parent() {
-            let _ = fs::remove_dir(parent);
-        }
-    }
-}
-
 struct Pipe {
     writer: Ipc,
     reader: BufReader<Ipc>,
@@ -316,28 +309,17 @@ fn run(
         );
     }
     fs::create_dir_all(&paths.config).map_err(err)?;
-    let name = format!(
-        "ani-{}-{}",
+    #[cfg(windows)]
+    let pipe_path = format!(
+        r"\\.\pipe\ani-{}-{}",
         std::process::id(),
         SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .unwrap_or_default()
             .as_nanos()
     );
-    #[cfg(windows)]
-    let pipe_path = PathBuf::from(format!(r"\\.\pipe\{name}"));
     #[cfg(unix)]
-    let socket = {
-        use std::os::unix::fs::DirBuilderExt;
-        let directory = Path::new("/tmp").join(name);
-        fs::DirBuilder::new()
-            .mode(0o700)
-            .create(&directory)
-            .map_err(err)?;
-        Socket(directory.join("mpv.sock"))
-    };
-    #[cfg(unix)]
-    let pipe_path = &socket.0;
+    let (file, peer) = UnixStream::pair().map_err(err)?;
     #[cfg(windows)]
     let engine_dir = paths
         .mpv
@@ -368,11 +350,16 @@ fn run(
             "--ytdl=yes",
         ])
         .arg(format!("--config-dir={}", paths.config.display()))
-        .arg(format!("--input-ipc-server={}", pipe_path.display()))
         .env("PATH", search_path)
         .quiet();
     #[cfg(windows)]
-    command.current_dir(engine_dir);
+    command
+        .arg(format!("--input-ipc-server={pipe_path}"))
+        .current_dir(engine_dir);
+    #[cfg(unix)]
+    command
+        .arg("--input-ipc-client=fd://0")
+        .stdin(Stdio::from(OwnedFd::from(peer)));
     match output {
         #[cfg(windows)]
         Output::Embedded(window) => {
@@ -394,34 +381,37 @@ fn run(
         }
     }
     let mut child = Process(command.spawn().map_err(err)?);
+    drop(command);
     #[cfg(windows)]
     let _job = Job::for_child(&child.0)?;
-    let timeout = Instant::now() + Duration::from_secs(6);
-    let file = loop {
-        #[cfg(windows)]
-        let connection = fs::OpenOptions::new()
-            .read(true)
-            .write(true)
-            .open(&pipe_path);
-        #[cfg(unix)]
-        let connection = UnixStream::connect(pipe_path);
-        if let Ok(file) = connection {
-            #[cfg(unix)]
-            file.set_read_timeout(Some(Duration::from_secs(3)))
-                .map_err(err)?;
-            break file;
+    #[cfg(windows)]
+    let file = {
+        let deadline = Instant::now() + Duration::from_secs(6);
+        loop {
+            if let Ok(file) = fs::OpenOptions::new()
+                .read(true)
+                .write(true)
+                .open(&pipe_path)
+            {
+                break file;
+            }
+            if Instant::now() > deadline || child.0.try_wait().map_err(err)?.is_some() {
+                return Err(tr("O mpv não iniciou a conexão.").into());
+            }
+            thread::sleep(Duration::from_millis(35));
         }
-        if Instant::now() > timeout || child.0.try_wait().map_err(err)?.is_some() {
-            return Err(tr("O mpv não iniciou a conexão.").into());
-        }
-        thread::sleep(Duration::from_millis(35));
     };
+    #[cfg(unix)]
+    file.set_read_timeout(Some(Duration::from_secs(6)))
+        .map_err(err)?;
     let mut pipe = Pipe {
         reader: BufReader::new(file.try_clone().map_err(err)?),
         writer: file,
         id: 0,
         events: events.clone(),
     };
+    #[cfg(unix)]
+    pipe.call(&[json!("get_property"), json!("idle-active")])?;
     let _ = events.send(Update::Ready);
     let mut filter_active = false;
     let mut next_poll = Instant::now();
