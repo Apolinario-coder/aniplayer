@@ -128,6 +128,9 @@ export VSSCRIPT_PATH="$ROOT/lib/python{version}/site-packages/vapoursynth/libvss
 export XDG_CONFIG_HOME="${{ANI_PLAYER_CONFIG:-$HOME/Library/Application Support/Ani Player}}/media-config"
 export PATH="$ROOT/bin:$PATH"
 export VK_ICD_FILENAMES="$ROOT/lib/MoltenVK_icd.json"
+if [ "$(basename "$0")" = mpv ]; then
+  "$ROOT/bin/python3" "$ROOT/configure-vsscript.py" "$ROOT" || exit $?
+fi
 exec "$ROOT/bin/$(basename "$0").real" "$@"
 '''
 for name in ("mpv", "ffmpeg", "python3"):
@@ -138,6 +141,26 @@ for name in ("mpv", "ffmpeg", "python3"):
 (root / "bin/yt-dlp").chmod(0o755)
 (root / "bin/vapoursynth").write_text('#!/bin/sh\nexec "$(dirname "$0")/python3" -m vapoursynth "$@"\n')
 (root / "bin/vapoursynth").chmod(0o755)
+(root / "configure-vsscript.py").write_text('''import fcntl, json, os, pathlib, sys
+root = pathlib.Path(sys.argv[1]).resolve()
+folder = pathlib.Path(os.environ["XDG_CONFIG_HOME"]) / "vapoursynth"
+folder.mkdir(parents=True, exist_ok=True)
+config = folder / "vapoursynth.toml"
+python = root / "bin/python3.real"
+library = root / "lib/Python"
+assert library.is_file(), library
+paths = [root / "lib/libvsscript.dylib", *root.glob("lib/python*/site-packages/vapoursynth/libvsscript.dylib")]
+keys = [json.dumps(str(path), ensure_ascii=False) for path in paths if path.is_file()]
+value = json.dumps([str(python), str(library), str(int(python.stat().st_mtime))], ensure_ascii=False)
+with (folder / "ani-player.lock").open("a") as lock:
+    fcntl.flock(lock, fcntl.LOCK_EX)
+    lines = config.read_text().splitlines() if config.exists() else []
+    lines = [line for line in lines if not any(line.startswith(key + " =") for key in keys)]
+    lines.extend(key + " = " + value for key in keys)
+    temporary = config.with_suffix(".tmp")
+    temporary.write_text("\\n".join(lines) + "\\n")
+    temporary.replace(config)
+''')
 for file in root.rglob("*"):
     if file.is_file() and (file.suffix in (".so", ".dylib", ".real") or file.name == "Python"):
         subprocess.run(["codesign", "--force", "--sign", "-", str(file)], check=True, capture_output=True)
