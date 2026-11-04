@@ -19,7 +19,13 @@ foreach ($row in (Get-Content -LiteralPath $manifest)) {
 }
 
 function Expand-RuntimeArchive([string]$Archive, [string]$Directory, [string[]]$Entries) {
-    & tar.exe -xf $Archive -C $Directory @Entries
+    if ([IO.Path]::GetExtension($Archive) -eq '.7z') {
+        $sevenZip = Get-Command 7z.exe -ErrorAction SilentlyContinue
+        if (!$sevenZip) { throw 'Install 7-Zip to extract the media build archives.' }
+        & $sevenZip.Source x -y "-o$Directory" $Archive @Entries | Out-Null
+    } else {
+        & tar.exe -xf $Archive -C $Directory @Entries
+    }
     if ($LASTEXITCODE) { throw "Could not extract $Archive." }
 }
 

@@ -15,7 +15,7 @@ cp COPYING.LESSER "$destination/licenses/VapourSynth-LGPL.txt"
 cd "$work"
 git clone --depth 1 --branch v0.36.0 https://github.com/mpv-player/mpv.git
 cd mpv
-PKG_CONFIG_PATH="$destination/lib/pkgconfig" meson setup build +  --prefix="$destination" -Dvapoursynth=enabled -Dlibmpv=false -Dmanpage-build=disabled
+PKG_CONFIG_PATH="$destination/lib/pkgconfig" meson setup build --prefix="$destination" -Dvapoursynth=enabled -Dlibmpv=false -Dmanpage-build=disabled
 meson compile -C build -j2
 meson install -C build
 cp Copyright LICENSE.GPL "$destination/licenses/"
