@@ -51,7 +51,7 @@ jobs:
           cargo +stable build --release --locked --target x86_64-apple-darwin
           bash installer/macos.sh
           pkgutil --expand-full dist/*.pkg "$RUNNER_TEMP/pkg"
-          lipo -verify_arch arm64 x86_64 "$RUNNER_TEMP/pkg/Payload/Ani Player.app/Contents/MacOS/ani-player"
+          lipo "$RUNNER_TEMP/pkg/Payload/Ani Player.app/Contents/MacOS/ani-player" -verify_arch arm64 x86_64
       - uses: actions/upload-artifact@v4
         with:
           name: macos
