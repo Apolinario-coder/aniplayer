@@ -22,7 +22,19 @@ jobs:
           sudo apt-get install -y libxkbcommon-dev libxkbcommon-x11-0 libwayland-dev libgl1-mesa-dev mpv ffmpeg python3 python3-dev python3-pip cython3 xvfb desktop-file-utils squashfs-tools autoconf automake libtool pkg-config libzimg-dev libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev libswresample-dev libswscale-dev libass-dev libplacebo-dev libxrandr-dev libxinerama-dev libxpresent-dev libxss-dev libpulse-dev libasound2-dev libvulkan1 mesa-vulkan-drivers libluajit-5.1-dev
           python3 -m pip install meson==1.5.2 ninja
       - run: rustup update stable
-      - run: bash installer/prepare-linux-media.sh "$RUNNER_TEMP/media"
+      - uses: actions/cache/restore@v4
+        id: linux-media-cache
+        with:
+          path: ${{ runner.temp }}/media
+          key: linux-media-${{ hashFiles('installer/prepare-linux-media.sh') }}
+      - if: steps.linux-media-cache.outputs.cache-hit != 'true'
+        run: bash installer/prepare-linux-media.sh "$RUNNER_TEMP/media"
+      - if: steps.linux-media-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/media
+          key: linux-media-${{ hashFiles('installer/prepare-linux-media.sh') }}
+      - run: "$RUNNER_TEMP/media/bin/python3" installer/check-mpv.py "$RUNNER_TEMP/media"
       - run: ANI_TEST_RIFE_FRAMES=1 "$RUNNER_TEMP/media/bin/python3" installer/check-rife.py "$RUNNER_TEMP/media"
       - run: |
           echo "ANI_MEDIA_DIR=$RUNNER_TEMP/media" >> "$GITHUB_ENV"
