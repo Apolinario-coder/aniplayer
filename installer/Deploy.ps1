@@ -128,7 +128,28 @@ try {
     try {
         Expand-AniArchive $Archive $staging
         [Console]::WriteLine(90)
-        foreach ($file in @('Ani Player.exe', 'mpv64\mpv.exe', 'utils\ffmpeg.exe', 'rife\rife_vs.dll')) {
+        $required = @('Ani Player.exe')
+        if (Test-Path -LiteralPath (Join-Path $staging '.bundled-runtime')) {
+            $required += @('mpv64\mpv.exe', 'utils\ffmpeg.exe', 'rife\rife_vs.dll')
+        } elseif (Test-Path -LiteralPath (Join-Path $destination 'mpv64\mpv.exe')) {
+            # Keep the optional local runtime when updating an existing offline installation.
+            foreach ($entry in @('mpv64', 'utils', 'rife', 'extensions', 'yt-dlp.exe', '.bundled-runtime')) {
+                $source = Join-Path $destination $entry
+                if (Test-Path -LiteralPath $source) {
+                    Copy-Item -LiteralPath $source -Destination $staging -Recurse
+                }
+            }
+            $oldNotices = Join-Path $destination 'licenses'
+            if (Test-Path -LiteralPath $oldNotices) {
+                foreach ($notice in (Get-ChildItem -LiteralPath $oldNotices -File)) {
+                    $copy = Join-Path (Join-Path $staging 'licenses') $notice.Name
+                    if (!(Test-Path -LiteralPath $copy)) {
+                        Copy-Item -LiteralPath $notice.FullName -Destination $copy
+                    }
+                }
+            }
+        }
+        foreach ($file in $required) {
             if (!(Test-Path -LiteralPath (Join-Path $staging $file) -PathType Leaf)) {
                 throw 'Pacote de instalação incompleto.'
             }

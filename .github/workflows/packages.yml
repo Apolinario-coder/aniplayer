@@ -64,20 +64,12 @@ jobs:
       - uses: actions/checkout@v4
       - run: rustup update stable
       - run: cargo +stable test --release --locked --features windows-setup
-      - run: cargo +stable build --release --locked
       - shell: pwsh
-        run: |
-          $version = (cargo +stable metadata --locked --no-deps --format-version 1 | ConvertFrom-Json).packages[0].version
-          New-Item -ItemType Directory -Force dist,dist/stage | Out-Null
-          Copy-Item 'target/release/ani-player.exe' 'dist/stage/Ani Player.exe'
-          Copy-Item 'assets/i18n/Noto-OFL.txt' 'dist/stage/'
-          Copy-Item 'assets/anime4k/LICENSE' 'dist/stage/Anime4K-LICENSE'
-          Copy-Item 'assets/icons/LICENSE' 'dist/stage/Lucide-LICENSE'
-          Compress-Archive -Path 'dist/stage/*' -DestinationPath "dist/Ani-Player-$version-windows-x64.zip"
+        run: ./installer/Build-Installer.ps1 -SystemRuntime
       - uses: actions/upload-artifact@v4
         with:
           name: windows
-          path: dist/*.zip
+          path: dist/*-windows-x64-setup.exe
           if-no-files-found: error
 
   publish:
@@ -99,11 +91,11 @@ jobs:
           release_id=$(gh api "repos/$GH_REPO/releases" --jq '.[] | select(.draft and .tag_name == "v1.0.0") | .id')
           test -n "$release_id"
           gh api "repos/$GH_REPO/releases/$release_id" --jq '.target_commitish' | grep -Fx "$GITHUB_SHA"
-          for asset in Ani-Player-1.0.0-windows-x64.zip Ani-Player-1.0.0-linux-x86_64.AppImage Ani-Player-1.0.0-macOS-universal.pkg; do
+          for asset in Ani-Player-1.0.0-windows-x64-setup.exe Ani-Player-1.0.0-linux-x86_64.AppImage Ani-Player-1.0.0-macOS-universal.pkg; do
             test -s "release/$asset"
             if ! gh api "repos/$GH_REPO/releases/$release_id/assets" --jq '.[].name' | grep -Fx "$asset"; then
               gh api --method POST -H 'Content-Type: application/octet-stream' --input "release/$asset" \
                 "https://uploads.github.com/repos/$GH_REPO/releases/$release_id/assets?name=$asset" --jq .name
             fi
           done
-          gh api --method PATCH "repos/$GH_REPO/releases/$release_id" -F draft=false --jq .html_url
+          gh api --method PATCH "repos/$GH_REPO/releases/$release_id" -f tag_name=v1.0.0 -F draft=false --jq .html_url
