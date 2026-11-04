@@ -59,8 +59,8 @@ jobs:
           tar -xf media/macos-media-arm64/media.tar -C "$RUNNER_TEMP/media/arm64"
           tar -xf media/macos-media-x86_64/media.tar -C "$RUNNER_TEMP/media/x86_64"
           echo "ANI_MAC_MEDIA_DIR=$RUNNER_TEMP/media" >> "$GITHUB_ENV"
+          echo "ANI_MEDIA_DIR=$RUNNER_TEMP/media/$(uname -m)" >> "$GITHUB_ENV"
       - run: rustup update stable && rustup target add --toolchain stable aarch64-apple-darwin x86_64-apple-darwin
-      - run: brew install mpv ffmpeg
       - run: cargo +stable test --release --locked
       - run: cargo +stable test --release --locked playback_motion_export_and_stream -- --ignored
       - run: |
@@ -91,11 +91,12 @@ jobs:
       - run: |
           python="$(brew --prefix)/bin/python3"
           "$python" installer/prepare-macos-media.py "$RUNNER_TEMP/media"
-          "$RUNNER_TEMP/media/bin/mpv" --vf=help | grep vapoursynth
-          "$RUNNER_TEMP/media/bin/python3" -c 'import vapoursynth; print(vapoursynth.core.version())'
-          "$RUNNER_TEMP/media/bin/python3" installer/check-rife.py "$RUNNER_TEMP/media"
-          "$RUNNER_TEMP/media/bin/ffmpeg" -v error -f lavfi -i color=s=64x64 -t 0.1 -f null -
-          tar -cf media.tar -C "$RUNNER_TEMP/media" .
+          mv "$RUNNER_TEMP/media" "$RUNNER_TEMP/relocated media"
+          env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/mpv" --vf=help | grep vapoursynth
+          env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/python3" -c 'import vapoursynth; print(vapoursynth.core.version())'
+          env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/python3" installer/check-rife.py "$RUNNER_TEMP/relocated media"
+          env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/ffmpeg" -v error -f lavfi -i color=s=64x64 -t 0.1 -f null -
+          tar -cf media.tar -C "$RUNNER_TEMP/relocated media" .
       - uses: actions/upload-artifact@v4
         with:
           name: macos-media-${{ matrix.arch }}
