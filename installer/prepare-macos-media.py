@@ -55,7 +55,12 @@ def copy_binary(source, target):
     return target
 
 for name in ("mpv", "ffmpeg", "python3"):
-    copy_binary(Path(shutil.which(name)), root / "bin" / (name + ".real"))
+    executable = Path(shutil.which(name))
+    if name == "python3":
+        framework_interpreter = stdlib.parent.parent / "Resources/Python.app/Contents/MacOS/Python"
+        if framework_interpreter.is_file():
+            executable = framework_interpreter
+    copy_binary(executable, root / "bin" / (name + ".real"))
 for file in list(root.rglob("*.so")) + list(root.rglob("*.dylib")):
     pending.append((file, file))
 molten = Path(output("brew", "--prefix", "molten-vk"))
