@@ -61,6 +61,8 @@ for name in ("mpv", "ffmpeg", "python3"):
         if framework_interpreter.is_file():
             executable = framework_interpreter
     copy_binary(executable, root / "bin" / (name + ".real"))
+for library in vs.glob("libvapoursynthfilters*.dylib"):
+    copy_binary(library, root / "lib" / library.name)
 for file in list(root.rglob("*.so")) + list(root.rglob("*.dylib")):
     pending.append((file, file))
 molten = Path(output("brew", "--prefix", "molten-vk"))
