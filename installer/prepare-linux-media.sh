@@ -22,6 +22,7 @@ cp Copyright LICENSE.GPL "$destination/licenses/"
 cp /usr/bin/ffmpeg "$destination/bin/ffmpeg.real"
 cp /usr/bin/python3.10 "$destination/bin/python3.real"
 cp -a /usr/lib/python3.10 "$destination/lib/"
+cp /etc/ssl/certs/ca-certificates.crt "$destination/lib/cert.pem"
 module=$(find "$destination/lib" -name 'vapoursynth*.so' -print -quit)
 test -n "$module"
 mkdir -p "$destination/lib/python3.10/site-packages"
@@ -48,6 +49,7 @@ ROOT=$(CDPATH= cd -- "$(dirname "$0")/.." && pwd -P)
 export LD_LIBRARY_PATH="$ROOT/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export PYTHONHOME="$ROOT"
 export PYTHONPATH="$ROOT/lib/python3.10/site-packages"
+export SSL_CERT_FILE="$ROOT/lib/cert.pem"
 export PATH="$ROOT/bin:$PATH"
 exec "$ROOT/bin/$(basename "$0").real" "$@"
 EOF

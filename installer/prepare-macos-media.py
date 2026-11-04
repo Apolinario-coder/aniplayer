@@ -67,6 +67,10 @@ for file in list(root.rglob("*.so")) + list(root.rglob("*.dylib")):
     pending.append((file, file))
 molten = Path(output("brew", "--prefix", "molten-vk"))
 copy_binary(molten / "lib/libMoltenVK.dylib", root / "lib/libMoltenVK.dylib")
+certificates = Path(output(str(python), "-c", "import ssl;print(ssl.get_default_verify_paths().cafile or '')"))
+if not certificates.is_file():
+    raise RuntimeError("The build environment has no CA certificate bundle")
+shutil.copy2(certificates, root / "lib/cert.pem")
 
 processed = set()
 while pending:
@@ -112,6 +116,7 @@ ROOT=$(CDPATH= cd -- "$(dirname "$0")/.." && pwd -P)
 export DYLD_LIBRARY_PATH="$ROOT/lib"
 export PYTHONHOME="$ROOT"
 export PYTHONPATH="$ROOT/lib/python{version}/site-packages"
+export SSL_CERT_FILE="$ROOT/lib/cert.pem"
 export PATH="$ROOT/bin:$PATH"
 export VK_ICD_FILENAMES="$ROOT/lib/MoltenVK_icd.json"
 exec "$ROOT/bin/$(basename "$0").real" "$@"
