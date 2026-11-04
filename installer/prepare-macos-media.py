@@ -44,10 +44,13 @@ def copy_binary(source, target):
     source = source.resolve()
     if source in copied:
         return copied[source]
+    if source == target.resolve():
+        return target
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, target)
     target.chmod(0o755)
     copied[source] = target
+    copied[target.resolve()] = target
     pending.append((source, target))
     return target
 
@@ -58,8 +61,12 @@ for file in list(root.rglob("*.so")) + list(root.rglob("*.dylib")):
 molten = Path(output("brew", "--prefix", "molten-vk"))
 copy_binary(molten / "lib/libMoltenVK.dylib", root / "lib/libMoltenVK.dylib")
 
+processed = set()
 while pending:
     source, target = pending.pop()
+    if target in processed:
+        continue
+    processed.add(target)
     subprocess.run(["codesign", "--remove-signature", str(target)], capture_output=True)
     dependencies = output("otool", "-L", str(source)).splitlines()[1:]
     for row in dependencies:
