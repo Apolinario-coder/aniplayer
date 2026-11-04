@@ -360,6 +360,11 @@ fn run(
         .arg(format!("--config-dir={}", paths.config.display()))
         .env("PATH", search_path)
         .quiet();
+    #[cfg(test)]
+    command.arg(format!(
+        "--log-file={}",
+        paths.config.join("mpv-test.log").display()
+    ));
     #[cfg(windows)]
     command
         .arg(format!("--input-ipc-server={pipe_path}"))
@@ -426,7 +431,25 @@ fn run(
         events: events.clone(),
     };
     #[cfg(unix)]
-    pipe.call(&[json!("get_property"), json!("idle-active")])?;
+    pipe.call(&[json!("get_property"), json!("idle-active")])
+        .map_err(|error| {
+            #[cfg(test)]
+            {
+                let log = fs::read_to_string(paths.config.join("mpv-test.log")).unwrap_or_default();
+                let tail = log
+                    .lines()
+                    .rev()
+                    .take(35)
+                    .collect::<Vec<_>>()
+                    .into_iter()
+                    .rev()
+                    .collect::<Vec<_>>()
+                    .join("\n");
+                return format!("{error}\n{tail}");
+            }
+            #[cfg(not(test))]
+            error
+        })?;
     let _ = events.send(Update::Ready);
     let mut filter_active = false;
     let mut next_poll = Instant::now();
