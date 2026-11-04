@@ -3,6 +3,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      publish_release_1_0:
+        description: Publish the existing Release 1.0 draft after all package jobs succeed
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -72,3 +77,31 @@ jobs:
           name: windows
           path: dist/*.zip
           if-no-files-found: error
+
+  publish:
+    if: ${{ inputs.publish_release_1_0 && github.ref == 'refs/heads/main' }}
+    needs: [linux, macos, windows]
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: release
+          merge-multiple: true
+      - run: |
+          set -euo pipefail
+          release_id=$(gh api "repos/$GH_REPO/releases" --jq '.[] | select(.draft and .tag_name == "v1.0.0") | .id')
+          test -n "$release_id"
+          gh api "repos/$GH_REPO/releases/$release_id" --jq '.target_commitish' | grep -Fx "$GITHUB_SHA"
+          for asset in Ani-Player-1.0.0-windows-x64.zip Ani-Player-1.0.0-linux-x86_64.AppImage Ani-Player-1.0.0-macOS-universal.pkg; do
+            test -s "release/$asset"
+            if ! gh api "repos/$GH_REPO/releases/$release_id/assets" --jq '.[].name' | grep -Fx "$asset"; then
+              gh api --method POST -H 'Content-Type: application/octet-stream' --input "release/$asset" \
+                "https://uploads.github.com/repos/$GH_REPO/releases/$release_id/assets?name=$asset" --jq .name
+            fi
+          done
+          gh api --method PATCH "repos/$GH_REPO/releases/$release_id" -F draft=false --jq .html_url
