@@ -108,6 +108,7 @@ jobs:
           env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/mpv" --vf=help | grep vapoursynth
           env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/python3" -c 'import vapoursynth; print(vapoursynth.core.version())'
           env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/python3" installer/check-rife.py "$RUNNER_TEMP/relocated media"
+          env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/python3" installer/check-mpv.py "$RUNNER_TEMP/relocated media"
           env PATH=/usr/bin:/bin "$RUNNER_TEMP/relocated media/bin/ffmpeg" -v error -f lavfi -i color=s=64x64 -t 0.1 -f null -
           tar -cf media.tar -C "$RUNNER_TEMP/relocated media" .
       - uses: actions/upload-artifact@v4

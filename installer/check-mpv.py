@@ -4,6 +4,7 @@ from pathlib import Path
 import socket
 import subprocess
 import sys
+import tempfile
 
 root = Path(sys.argv[1])
 client, child = socket.socketpair()
@@ -33,3 +34,18 @@ finally:
     client.close()
     process.terminate()
     process.wait(timeout=10)
+
+with tempfile.TemporaryDirectory() as folder:
+    clip = Path(folder) / "test.mp4"
+    script = Path(folder) / "test.vpy"
+    script.write_text("video_in.std.FlipVertical().set_output()\n")
+    subprocess.run([str(root / "bin/ffmpeg"), "-v", "error", "-f", "lavfi",
+                    "-i", "color=s=64x64:r=24", "-t", "0.2", str(clip)], check=True)
+    path = str(script)
+    result = subprocess.run([
+        str(root / "bin/mpv"), "--config=no", "--vo=null", "--ao=null", "--frames=2",
+        f"--vf=vapoursynth=file=%{len(path.encode('utf-8'))}%{path}", str(clip),
+    ], capture_output=True, timeout=30)
+    if result.returncode:
+        raise RuntimeError(result.stdout.decode("utf-8", "replace") + result.stderr.decode("utf-8", "replace"))
+    print("Bundled mpv processed video through VapourSynth.")
