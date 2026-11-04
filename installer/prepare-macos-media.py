@@ -124,7 +124,8 @@ export DYLD_LIBRARY_PATH="$ROOT/lib"
 export PYTHONHOME="$ROOT"
 export PYTHONPATH="$ROOT/lib/python{version}/site-packages"
 export SSL_CERT_FILE="$ROOT/lib/cert.pem"
-export VSSCRIPT_PATH="$ROOT/lib/libvsscript.dylib"
+export VSSCRIPT_PATH="$ROOT/lib/python{version}/site-packages/vapoursynth/libvsscript.dylib"
+export XDG_CONFIG_HOME="${{ANI_PLAYER_CONFIG:-$HOME/Library/Application Support/Ani Player}}/media-config"
 export PATH="$ROOT/bin:$PATH"
 export VK_ICD_FILENAMES="$ROOT/lib/MoltenVK_icd.json"
 exec "$ROOT/bin/$(basename "$0").real" "$@"
@@ -135,6 +136,8 @@ for name in ("mpv", "ffmpeg", "python3"):
     path.chmod(0o755)
 (root / "bin/yt-dlp").write_text('#!/bin/sh\nexec "$(dirname "$0")/python3" -m yt_dlp "$@"\n')
 (root / "bin/yt-dlp").chmod(0o755)
+(root / "bin/vapoursynth").write_text('#!/bin/sh\nexec "$(dirname "$0")/python3" -m vapoursynth "$@"\n')
+(root / "bin/vapoursynth").chmod(0o755)
 for file in root.rglob("*"):
     if file.is_file() and (file.suffix in (".so", ".dylib", ".real") or file.name == "Python"):
         subprocess.run(["codesign", "--force", "--sign", "-", str(file)], check=True, capture_output=True)
