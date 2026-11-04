@@ -25,7 +25,8 @@ cp -a /usr/lib/python3.10 "$destination/lib/"
 module=$(find "$destination/lib" -name 'vapoursynth*.so' -print -quit)
 test -n "$module"
 mkdir -p "$destination/lib/python3.10/site-packages"
-cp "$module" "$destination/lib/python3.10/site-packages/"
+module_target="$destination/lib/python3.10/site-packages/$(basename "$module")"
+if [[ "$module" != "$module_target" ]]; then cp "$module" "$module_target"; fi
 cp "$destination/bin/mpv" "$destination/bin/mpv.real"
 base=https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan
 curl -fLsS --retry 3 "$base/releases/download/r9_mod_v33/librife_linux_x86-64.so" -o "$destination/rife/librife.so"
