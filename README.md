@@ -26,6 +26,8 @@ Linux and macOS use separate playback windows. Embedded playback, the in-video s
 
 For online URLs, install yt-dlp. For HLS, install Python 3. The macOS app searches the standard Homebrew paths. You can point Ani Player directly to its tools with `ANI_MPV`, `ANI_FFMPEG`, and `ANI_PYTHON`.
 
+For Ubuntu or Debian, install the local playback tools with `sudo apt install mpv ffmpeg python3 curl`. On macOS with Homebrew, use `brew install mpv ffmpeg yt-dlp`.
+
 Ani Player checks GitHub at startup for a newer stable release. **Download update** opens the release in your browser, where you can choose your platform's package.
 
 ## Build from source

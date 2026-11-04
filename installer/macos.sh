@@ -22,6 +22,7 @@ done
 iconutil -c icns "$stage/AniPlayer.iconset" -o "$app/Resources/AniPlayer.icns"
 cp assets/i18n/Noto-OFL.txt "$app/Resources/"
 cp assets/anime4k/LICENSE "$app/Resources/Anime4K-LICENSE"
+cp assets/icons/LICENSE "$app/Resources/Lucide-LICENSE"
 cat > "$app/Info.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

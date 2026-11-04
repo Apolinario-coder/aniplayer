@@ -10,6 +10,7 @@ install -Dm755 target/release/ani-player "$app/usr/bin/ani-player"
 install -m644 assets/ani-player.png "$app/ani-player.png"
 install -Dm644 assets/i18n/Noto-OFL.txt "$app/usr/share/doc/ani-player/Noto-OFL.txt"
 install -Dm644 assets/anime4k/LICENSE "$app/usr/share/doc/ani-player/Anime4K-LICENSE"
+install -Dm644 assets/icons/LICENSE "$app/usr/share/doc/ani-player/Lucide-LICENSE"
 cat > "$app/ani-player.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
