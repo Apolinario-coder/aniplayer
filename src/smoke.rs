@@ -66,6 +66,9 @@ fn playback_motion_export_and_stream() {
     let mut paths = Paths::find();
     paths.config = folder.0.join("config");
     let clip = folder.0.join("Vídeo ç de teste.mp4");
+    let width = if cfg!(target_os = "linux") { 64 } else { 320 };
+    let height = if cfg!(target_os = "linux") { 64 } else { 180 };
+    let source = format!("testsrc2=size={width}x{height}:rate=24");
     assert!(
         Command::new(&paths.ffmpeg)
             .args([
@@ -75,7 +78,7 @@ fn playback_motion_export_and_stream() {
                 "-f",
                 "lavfi",
                 "-i",
-                "testsrc2=size=320x180:rate=24",
+                &source,
                 "-f",
                 "lavfi",
                 "-i",
@@ -199,7 +202,7 @@ fn playback_motion_export_and_stream() {
     engine.command([json!("loadfile"), json!(stream.url), json!("replace")]);
     expect_state(&engine, "reprodução HLS por URL", |s| {
         s.get("path").and_then(|v| v.as_str()) == Some(stream.url.as_str())
-            && s.get("width").and_then(|v| v.as_i64()) == Some(320)
+            && s.get("width").and_then(|v| v.as_i64()) == Some(width)
     });
     engine.words(&["stop"]);
     expect_state(&engine, "parada", |s| {
