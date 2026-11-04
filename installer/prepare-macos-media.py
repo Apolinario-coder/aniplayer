@@ -67,7 +67,7 @@ while pending:
     if target in processed:
         continue
     processed.add(target)
-    subprocess.run(["codesign", "--remove-signature", str(target)], capture_output=True)
+    changes = []
     dependencies = output("otool", "-L", str(source)).splitlines()[1:]
     for row in dependencies:
         dependency = row.strip().split(" (compatibility")[0]
@@ -90,9 +90,11 @@ while pending:
             continue
         relocated = copy_binary(resolved, root / "lib" / resolved.name)
         relative = os.path.relpath(relocated, target.parent)
-        subprocess.run(["install_name_tool", "-change", dependency, "@loader_path/" + relative, str(target)], check=True)
+        changes.extend(["-change", dependency, "@loader_path/" + relative])
     if target.suffix in (".so", ".dylib") or target.name == "Python":
-        subprocess.run(["install_name_tool", "-id", "@loader_path/" + target.name, str(target)], capture_output=True)
+        changes.extend(["-id", "@loader_path/" + target.name])
+    if changes:
+        subprocess.run(["install_name_tool", *changes, str(target)], check=True)
 
 (root / "lib/MoltenVK_icd.json").write_text(json.dumps({
     "file_format_version": "1.0.0",
