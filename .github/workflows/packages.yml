@@ -34,7 +34,8 @@ jobs:
         with:
           path: ${{ runner.temp }}/media
           key: linux-media-${{ hashFiles('installer/prepare-linux-media.sh') }}
-      - run: "$RUNNER_TEMP/media/bin/python3" installer/check-mpv.py "$RUNNER_TEMP/media"
+      - run: |
+          "$RUNNER_TEMP/media/bin/python3" installer/check-mpv.py "$RUNNER_TEMP/media"
       - run: ANI_TEST_RIFE_FRAMES=1 "$RUNNER_TEMP/media/bin/python3" installer/check-rife.py "$RUNNER_TEMP/media"
       - run: |
           echo "ANI_MEDIA_DIR=$RUNNER_TEMP/media" >> "$GITHUB_ENV"
