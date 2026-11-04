@@ -372,7 +372,7 @@ fn run(
     #[cfg(windows)]
     {
         let script = engine_dir.join("Lib/site-packages/vapoursynth/vsscript.dll");
-        if script.is_file() && env::var_os("VSSCRIPT_PATH").is_none() {
+        if script.is_file() {
             command.env("VSSCRIPT_PATH", script);
         }
     }
