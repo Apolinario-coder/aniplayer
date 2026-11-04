@@ -23,6 +23,7 @@ jobs:
           python3 -m pip install meson==1.5.2 ninja
       - run: rustup update stable
       - run: bash installer/prepare-linux-media.sh "$RUNNER_TEMP/media"
+      - run: ANI_TEST_RIFE_FRAMES=1 "$RUNNER_TEMP/media/bin/python3" installer/check-rife.py "$RUNNER_TEMP/media"
       - run: |
           echo "ANI_MEDIA_DIR=$RUNNER_TEMP/media" >> "$GITHUB_ENV"
           echo "ANI_LINUX_MEDIA_DIR=$RUNNER_TEMP/media" >> "$GITHUB_ENV"
@@ -91,6 +92,7 @@ jobs:
           "$python" installer/prepare-macos-media.py "$RUNNER_TEMP/media"
           "$RUNNER_TEMP/media/bin/mpv" --vf=help | grep vapoursynth
           "$RUNNER_TEMP/media/bin/python3" -c 'import vapoursynth; print(vapoursynth.core.version())'
+          "$RUNNER_TEMP/media/bin/python3" installer/check-rife.py "$RUNNER_TEMP/media"
           "$RUNNER_TEMP/media/bin/ffmpeg" -v error -f lavfi -i color=s=64x64 -t 0.1 -f null -
           tar -cf media.tar -C "$RUNNER_TEMP/media" .
       - uses: actions/upload-artifact@v4
