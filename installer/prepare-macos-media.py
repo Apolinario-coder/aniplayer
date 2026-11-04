@@ -23,7 +23,8 @@ shutil.copytree(stdlib, root / "lib" / f"python{version}", symlinks=False,
 site = root / "lib" / f"python{version}" / "site-packages"
 site.mkdir()
 vs = Path(output(str(python), "-c", "import vapoursynth;print(vapoursynth.__file__)")).parent
-shutil.copytree(vs, site / "vapoursynth", symlinks=False)
+shutil.copytree(vs, site / "vapoursynth", symlinks=False,
+                ignore_dangling_symlinks=True, ignore=shutil.ignore_patterns("__pycache__"))
 subprocess.run([str(python), "-m", "pip", "install", "--no-deps", "--target", str(site),
                 "yt-dlp==2026.10.21"], check=True)
 arch = output("uname", "-m")
