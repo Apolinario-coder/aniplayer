@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           sudo apt-get update
-          sudo apt-get install -y libxkbcommon-dev libwayland-dev libgl1-mesa-dev mpv ffmpeg python3 xvfb desktop-file-utils squashfs-tools
+          sudo apt-get install -y libxkbcommon-dev libxkbcommon-x11-0 libwayland-dev libgl1-mesa-dev mpv ffmpeg python3 xvfb desktop-file-utils squashfs-tools
       - run: rustup update stable
       - run: cargo +stable test --release --locked
       - run: cargo +stable test --release --locked playback_motion_export_and_stream -- --ignored

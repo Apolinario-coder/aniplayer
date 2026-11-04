@@ -7,6 +7,14 @@ stage=$(mktemp -d)
 trap 'rm -rf "$stage"' EXIT
 app="$stage/AniPlayer.AppDir"
 install -Dm755 target/release/ani-player "$app/usr/bin/ani-player"
+for soname in libxkbcommon-x11.so.0 libxkbcommon.so.0 libxcb-xkb.so.1; do
+  library=$(ldconfig -p | awk -v name="$soname" '$1 == name && !seen++ {print $NF}')
+  test -n "$library"
+  install -Dm644 "$library" "$app/usr/lib/$soname"
+done
+for package in libxkbcommon-x11-0 libxkbcommon0 libxcb-xkb1; do
+  install -Dm644 "/usr/share/doc/$package/copyright" "$app/usr/share/doc/ani-player/$package-copyright"
+done
 install -m644 assets/ani-player.png "$app/ani-player.png"
 install -Dm644 assets/i18n/Noto-OFL.txt "$app/usr/share/doc/ani-player/Noto-OFL.txt"
 install -Dm644 assets/anime4k/LICENSE "$app/usr/share/doc/ani-player/Anime4K-LICENSE"
@@ -23,6 +31,7 @@ EOF
 cat > "$app/AppRun" <<'EOF'
 #!/bin/sh
 HERE=$(dirname "$(readlink -f "$0")")
+export LD_LIBRARY_PATH="$HERE/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 exec "$HERE/usr/bin/ani-player" "$@"
 EOF
 chmod +x "$app/AppRun"
