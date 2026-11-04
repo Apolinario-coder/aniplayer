@@ -6,7 +6,9 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import tempfile
 import urllib.request
+import zipfile
 
 root = Path(sys.argv[1]).resolve()
 for name in ("bin", "lib", "rife/models/rife-v4.16lite", "licenses"):
@@ -15,7 +17,9 @@ for name in ("bin", "lib", "rife/models/rife-v4.16lite", "licenses"):
 def output(*args):
     return subprocess.check_output(args, text=True).strip()
 
-python = Path(shutil.which("python3"))
+python = Path(output("brew", "--prefix", "vapoursynth")) / "libexec/bin/python"
+if not python.is_file():
+    raise RuntimeError("VapourSynth's matching Python interpreter is missing")
 version = output(str(python), "-c", 'import sys;print(f"{sys.version_info.major}.{sys.version_info.minor}")')
 stdlib = Path(output(str(python), "-c", 'import sysconfig;print(sysconfig.get_path("stdlib"))'))
 shutil.copytree(stdlib, root / "lib" / f"python{version}", symlinks=False,
@@ -25,8 +29,11 @@ site.mkdir()
 vs = Path(output(str(python), "-c", "import vapoursynth;print(vapoursynth.__file__)")).parent
 shutil.copytree(vs, site / "vapoursynth", symlinks=False,
                 ignore_dangling_symlinks=True, ignore=shutil.ignore_patterns("__pycache__"))
-subprocess.run([str(python), "-m", "pip", "install", "--no-deps", "--target", str(site),
-                "yt-dlp==2026.10.21"], check=True)
+with tempfile.TemporaryDirectory() as wheels:
+    subprocess.run([sys.executable, "-m", "pip", "download", "--no-deps", "--dest", wheels,
+                    "yt-dlp==2026.10.21"], check=True)
+    with zipfile.ZipFile(next(Path(wheels).glob("*.whl"))) as wheel:
+        wheel.extractall(site)
 arch = output("uname", "-m")
 raw = "https://raw.githubusercontent.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/c3ec6aabc07c8fa37a4f58d7fed9e2ad1fc1b13f"
 plugin = "librife_macos_arm64.dylib" if arch == "arm64" else "librife_macos_x86-64.dylib"
@@ -55,13 +62,13 @@ def copy_binary(source, target):
     return target
 
 for name in ("mpv", "ffmpeg", "python3"):
-    executable = Path(shutil.which(name))
+    executable = python if name == "python3" else Path(shutil.which(name))
     if name == "python3":
         framework_interpreter = stdlib.parent.parent / "Resources/Python.app/Contents/MacOS/Python"
         if framework_interpreter.is_file():
             executable = framework_interpreter
     copy_binary(executable, root / "bin" / (name + ".real"))
-for library in vs.glob("libvapoursynthfilters*.dylib"):
+for library in vs.glob("*.dylib"):
     copy_binary(library, root / "lib" / library.name)
 for file in list(root.rglob("*.so")) + list(root.rglob("*.dylib")):
     pending.append((file, file))
@@ -117,6 +124,7 @@ export DYLD_LIBRARY_PATH="$ROOT/lib"
 export PYTHONHOME="$ROOT"
 export PYTHONPATH="$ROOT/lib/python{version}/site-packages"
 export SSL_CERT_FILE="$ROOT/lib/cert.pem"
+export VSSCRIPT_PATH="$ROOT/lib/libvsscript.dylib"
 export PATH="$ROOT/bin:$PATH"
 export VK_ICD_FILENAMES="$ROOT/lib/MoltenVK_icd.json"
 exec "$ROOT/bin/$(basename "$0").real" "$@"
